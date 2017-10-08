@@ -15,24 +15,22 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  LoginUser(e) {
-    e.preventDefault();
-    console.log(e);
-    let username = e.target.elements[0].value;
-    let password = e.target.elements[1].value;
-    console.log(username, password);    
+
+  Login(event, username, pass) {
+    console.log(event);
+    let user = username;
+    let password = pass;
     this.user.setUserLoggedIn();
-    this.user.setUsername(username);
+    this.user.setUsername(user);
     this.router.navigate(['home']);
-    return false;
-    
- 
-
+    event.preventDefault();
+    console.log("user:", user, "pass:", pass);
   }
 
-  RegisterUser(){
-    this.router.navigate(['register'])
-    return false;
+  Register(event) {
+    console.log(event);
+    event.preventDefault();
+    console.log("hello world");
+    this.router.navigate(['register']);
   }
-
 }

@@ -1,0 +1,12 @@
+#register-form {
+    
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+
+.ui.attached.label {
+    background-color: #f2711c;
+    color: #fff;
+}

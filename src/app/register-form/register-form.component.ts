@@ -13,10 +13,13 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  RegisterUser(e) {
+  RegisterUser(event, name, user, email, pass) {
 
+    console.log("name", name, "user", user, "email", email, "pass", pass);
+    
     this.router.navigate(['home']);
-    return false;
+    event.preventDefault();
+   
     
   }
 }

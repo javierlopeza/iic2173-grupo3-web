@@ -15,8 +15,7 @@ const appRoutes:Routes = [
     component: LoginFormComponent
   },
   {
-    path: 'home',
-    canActivate: [AuthGuard],
+    path: 'home',   
     component: HomeComponent
     
   },

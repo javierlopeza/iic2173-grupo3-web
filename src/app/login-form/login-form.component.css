@@ -1,0 +1,15 @@
+#login-form {
+    
+    width: 50%;
+    margin: 0 auto;
+}
+
+#HomeTitle {
+    padding: 20px;
+    text-align: center;
+}
+
+.ui.attached.label {
+    background-color: #f2711c;
+    color: #fff;
+}
