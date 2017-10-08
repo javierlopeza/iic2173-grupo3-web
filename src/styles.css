@@ -1,13 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Top menu style */
 .menu {
     background-color: white !important;
+    margin-bottom: 0 !important;   
 }
-.content {
-    margin-top: 40px !important;
+
+/* Custom form */
+.custom-form {
+    width: 50%;
+    margin: 0 auto;
 }
-.logo {
-    padding: 0 !important;
+.ui.attached.label {
+    background-color: #f2711c;
+    color: #fff;
 }
-.logo img {
-    padding: 3px;
+
+/* Page title  */
+h1.main {
+    padding: 20px 20px 0 20px;
+    text-align: center;
+    margin-bottom: 0;
 }
