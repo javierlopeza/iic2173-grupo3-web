@@ -1,0 +1,47 @@
+<div class="ui secondary top pointing menu">
+	<button class="ui icon button item" routerLink="/home">
+		<i class="home icon"></i>
+	</button>
+	<a class="item" routerLink="/product">
+		Productos
+	</a>
+	<a class="item active" routerLink="/order">
+		Comprar
+	</a>
+	<div class="right menu">
+		<a class="ui item" routerLink="/">
+			Logout
+		</a>
+	</div>
+</div>
+
+<div class="ui content">
+
+	<h1 class="main">Compra de productos</h1>
+
+	<div class="ui divider"></div>
+
+	<div class="custom-form">
+		<div class="html ui top attached segment">
+			<div class="ui top attached label">Ingresa los datos para realizar la compra</div>
+			<form class="ui form">
+
+				<div class="field">
+					<label>Código del producto</label>
+					<input #code type="text" required>
+				</div>
+
+				<div class="field">
+					<label>Dirección de entrega</label>
+					<input #address type="text" required>
+				</div>
+
+				<button class="ui orange button" (click)="makeOrder(code.value, address.value)">
+					Comprar
+				</button>
+				
+			</form>
+		</div>
+	</div>
+
+</div>

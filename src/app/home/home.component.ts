@@ -10,11 +10,12 @@ export class HomeComponent implements OnInit {
 
   username: any;
 
-  constructor(private user:UserService) {
+  constructor(private user: UserService) {
     this.username = this.user.getUsername();
-   }
+  }
 
   ngOnInit() {
+    console.log('Logged user:', this.username);
   }
 
 }
