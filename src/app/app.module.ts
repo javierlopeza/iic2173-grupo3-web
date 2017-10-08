@@ -7,17 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes} from '@angular/router';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserService } from './user.service';
-import { AuthGuard} from './auth.guard'
+import { AuthGuard} from './auth.guard';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   {
     path: '',
     component: LoginFormComponent
   },
   {
-    path: 'home',   
+    path: 'home',
     component: HomeComponent
-    
   },
   {
     path: 'register',
@@ -25,7 +24,7 @@ const appRoutes:Routes = [
   }
 
 
-]
+];
 
 
 
@@ -34,8 +33,7 @@ const appRoutes:Routes = [
     AppComponent,
     LoginFormComponent,
     HomeComponent,
-    RegisterFormComponent
-    
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
