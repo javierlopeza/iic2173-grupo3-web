@@ -39,9 +39,23 @@
 				<button class="ui orange button" (click)="makeOrder(code.value, address.value)">
 					Comprar
 				</button>
-				
+
 			</form>
 		</div>
+	</div>
+
+	<div class="ui positive message">
+		<div class="header">
+			¡Compra exitosa!
+		</div>
+		<p>La compra se ha realizado con éxito.</p>
+	</div>
+
+	<div class="ui negative message">
+		<div class="header">
+			Error en la compra
+		</div>
+		<p>Ha ocurrido un error al procesar la compra.</p>
 	</div>
 
 </div>
