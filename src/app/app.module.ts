@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -33,10 +34,7 @@ const appRoutes: Routes = [
     path: 'order',
     component: OrderFormComponent
   }
-
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -49,7 +47,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [UserService, AuthGuard],
   bootstrap: [AppComponent]

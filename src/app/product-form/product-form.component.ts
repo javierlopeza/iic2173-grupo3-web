@@ -10,15 +10,17 @@ import { UserService } from '../user.service';
 })
 export class ProductFormComponent implements OnInit {
 
+  code = '';
+
   constructor(private router: Router, private user: UserService) {
   }
 
   ngOnInit() {
   }
 
-  searchProduct(code) {
+  searchProduct() {
     const username = this.user.getUsername();
-    console.log('Product Code:', code, 'Username:', username);
+    console.log('Product Code:', this.code, 'Username:', username);
   }
 
 }
