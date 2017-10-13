@@ -16,7 +16,11 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get_categories();
+    
+  }
 
+  get_categories() {
     this.api.getData('categorias').then(res => {
       this.data = res;
       console.log(this.data);
@@ -24,9 +28,6 @@ export class CategoriesComponent implements OnInit {
       console.log(err);
       
     });
-
-    
-
 
   }
 
