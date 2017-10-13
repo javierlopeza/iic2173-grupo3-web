@@ -24,23 +24,23 @@
 	<div class="custom-form">
 		<div class="html ui top attached segment">
 			<div class="ui top attached label">Ingresa los datos para realizar la compra</div>
-			<form class="ui form">
+			<div class="ui form">
 
 				<div class="field">
 					<label>Código del producto</label>
-					<input #code type="text" required>
+					<input [(ngModel)]="code" type="text">
 				</div>
 
 				<div class="field">
 					<label>Dirección de entrega</label>
-					<input #address type="text" required>
+					<input [(ngModel)]="address" type="text">
 				</div>
 
-				<button class="ui orange button" (click)="makeOrder(code.value, address.value)">
+				<button class="ui orange button" (click)="makeOrder()">
 					Comprar
 				</button>
 
-			</form>
+			</div>
 		</div>
 	</div>
 

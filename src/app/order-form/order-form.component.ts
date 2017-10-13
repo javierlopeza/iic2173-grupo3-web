@@ -10,6 +10,8 @@ import { UserService } from '../user.service';
 })
 export class OrderFormComponent implements OnInit {
 
+  code = '';
+  address = '';
 
   constructor( private router: Router, private user: UserService) {
   }
@@ -17,8 +19,8 @@ export class OrderFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  makeOrder(product_code, address) {
+  makeOrder() {
     const username = this.user.getUsername();
-    console.log('Product Code:', product_code, 'Address:', address, 'Username:', username);
+    console.log('Product Code:', this.code, 'Address:', this.address, 'Username:', username);
   }
 }
