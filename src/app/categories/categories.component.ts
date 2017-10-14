@@ -21,13 +21,18 @@ export class CategoriesComponent implements OnInit {
     // Request products
     this.api.getData(`/categories?page=${this.page}`, true)
     .then(data => {
-      if (data) {
+      if (data[0]) {
         this.categories = data;
-        console.log(this.categories);
       } else {
-        this.categories = [];
+        this.page = 1;
+        this.getCategories();
       }
     });
+  }
+
+  nextPage() {
+    this.page++;
+    this.getCategories();
   }
 
 }

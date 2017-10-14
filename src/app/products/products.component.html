@@ -1,23 +1,27 @@
 <app-navbar></app-navbar>
 
-<table class="ui celled striped table product-info">
+<button class="ui orange button more" (click)="nextPage()">
+  SHOW MORE
+</button>
+
+<table class="ui celled striped table">
   <thead>
     <tr>
       <th colspan="2">
-        Productos
+        Productos - Page {{page}}
       </th>
     </tr>
   </thead>
   <thead>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Name
-        </th>
-      </tr>
-    </thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Name
+      </th>
+    </tr>
+  </thead>
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.id}}</td>

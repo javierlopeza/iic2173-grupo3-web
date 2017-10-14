@@ -1,5 +1,9 @@
-.product-info {
+.table {
     width: 70%;
     margin-left: 15%;
     margin-top: 25px;
+}
+.more {
+    margin-left: 15%;    
+    margin-top: 25px;    
 }
