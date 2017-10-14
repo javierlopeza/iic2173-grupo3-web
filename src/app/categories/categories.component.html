@@ -1,7 +1,39 @@
 <app-navbar></app-navbar>
 
-<ul>
-    <li *ngFor="let category of categories">
-      {{category}}
-    </li>
-</ul>
+<button class="ui orange button more" (click)="nextPage()">
+  SHOW MORE
+</button>
+
+<table class="ui celled striped table">
+  <thead>
+    <tr>
+      <th colspan="4">
+        Categorias - Page {{page}}
+      </th>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Area
+      </th>
+      <th>
+        Context
+      </th>
+      <th>
+        Group
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td>{{category.id}}</td>
+      <td>{{category.area}}</td>
+      <td>{{category.context}}</td>
+      <td>{{category.group}}</td>
+    </tr>
+  </tbody>
+</table>

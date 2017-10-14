@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service'
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-products',
@@ -21,12 +21,18 @@ export class ProductsComponent implements OnInit {
     // Request products
     this.api.getData(`/products?page=${this.page}`, true)
     .then(data => {
-      if (data[0].name) {
+      if (data[0]) {
         this.products = data;
       } else {
-        this.products = [];
+        this.page = 1;
+        this.getProducts();
       }
     });
+  }
+
+  nextPage() {
+    this.page++;
+    this.getProducts();
   }
 
 }

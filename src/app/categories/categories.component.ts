@@ -1,37 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service'
+import { ApiService } from '../api.service';
 
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
-  
 })
 export class CategoriesComponent implements OnInit {
-  public data: any;
-  public categories: any;
+  categories: any = [];
+  page = 1;
 
-  constructor(private api: ApiService) { 
-    
-  }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.get_categories();
-    
+    this.getCategories();
   }
 
-  get_categories() {
-    this.api.getData('categorias', true).then(res => {
-      this.data = res;
-      this.categories = this.data.map( x => [x.context, x.area, x.group] );
-      
-      console.log(this.data);
-    }, (err) => {
-      console.log(err);
-      
+  getCategories() {
+    // Request products
+    this.api.getData(`/categories?page=${this.page}`, true)
+    .then(data => {
+      if (data[0]) {
+        this.categories = data;
+      } else {
+        this.page = 1;
+        this.getCategories();
+      }
     });
+  }
 
+  nextPage() {
+    this.page++;
+    this.getCategories();
   }
 
 }

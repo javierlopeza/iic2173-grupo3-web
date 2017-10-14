@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ApiService {
 
-  private apiRoot = 'http://arqss8.ing.puc.cl/api';
+  private apiRoot = 'https://arqss8.ing.puc.cl/api';
   public data: any = {};
 
   constructor(private _http: Http) { }
