@@ -12,7 +12,7 @@ export class ApiService {
   constructor(private _http: Http) { }
 
   getData(request_path: string, token_required: boolean) {
-    const promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const headers = new Headers();
       if (token_required) {
         // tslint:disable-next-line:max-line-length
@@ -31,23 +31,28 @@ export class ApiService {
           resolve(this.data);
         });
     });
-    return promise;
   }
 
   postData(credentials, request_path) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
+      const headers = new Headers();
       // if (request_path == "tokens") { or whatever login endpoint
       //   headers.append("Content-Type", "application/json");
       // }
       // else {
       //   headers.append("token", localStorage.getItem("token"));
       // }
-      this._http.post(this.apiRoot + request_path, credentials, { headers: headers })
-        .subscribe(res => {
-          resolve(res.json());
-        }, (err) => {
-          reject(err);
+      const options = new RequestOptions({ headers: headers, method: 'post' });
+      const apiURL = `${this.apiRoot}${request_path}`;
+      this._http.post(apiURL, credentials, options)
+        .toPromise()
+        .then(res => {
+          this.data = res.json();
+          resolve(this.data);
+        })
+        .catch(err => {
+          this.data = err.json();
+          resolve(this.data);
         });
     });
   }
