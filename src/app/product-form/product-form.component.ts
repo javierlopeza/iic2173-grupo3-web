@@ -32,11 +32,11 @@ export class ProductFormComponent implements OnInit {
   }
 
   searchProduct() {
+    // Validate ID (must be a number)
     if (/^\d+$/.test(this.product_id) === false) {
       return;
     }
-    const username = this.user.getUsername();
-    console.log('Product Code:', this.product.id);
+    // Request product by ID
     this.api.getData(`/product/${this.product_id}`, true)
     .then(data => {
       if (data['success']) {
@@ -50,7 +50,6 @@ export class ProductFormComponent implements OnInit {
         this.error_msg = true;
       }
     });
-
   }
 
 
