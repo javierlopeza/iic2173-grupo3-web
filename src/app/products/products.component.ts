@@ -8,29 +8,25 @@ import { ApiService } from '../api.service'
 })
 export class ProductsComponent implements OnInit {
 
-  public data:any;
-  public products:any;
+  products: any = [];
+  page = 1;
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.get_products();
+    this.getProducts();
   }
 
-  get_products() {
-
-    this.api.getData('productos').then(res => {
-      this.data = res;
-      console.log(this.data);
-      this.products = this.data.map( x => x.name);
-      console.log("products", this.products);
-    }, (err) => {
-      console.log(err);
-      
+  getProducts() {
+    // Request products
+    this.api.getData(`/products?page=${this.page}`, true)
+    .then(data => {
+      if (data[0].name) {
+        this.products = data;
+      } else {
+        this.products = [];
+      }
     });
-
-    
-
   }
 
 }

@@ -6,3 +6,7 @@
 .table-label {
     font-weight: bold;
 }
+.message {
+    width: 50%;
+    margin-left: 25%;
+}

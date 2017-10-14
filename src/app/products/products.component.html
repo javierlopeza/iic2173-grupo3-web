@@ -1,7 +1,27 @@
 <app-navbar></app-navbar>
 
-<ul>
-    <li *ngFor="let product of products">
-      {{product}}
-    </li>
-</ul>
+<table class="ui celled striped table product-info">
+  <thead>
+    <tr>
+      <th colspan="2">
+        Productos disponibles
+      </th>
+    </tr>
+  </thead>
+  <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+    </tr>
+  </tbody>
+</table>
