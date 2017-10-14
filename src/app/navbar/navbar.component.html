@@ -1,18 +1,18 @@
 <div class="ui secondary top pointing menu">
-	<button class="ui icon button item" routerLink="/home">
+	<button class="ui icon button item" [routerLinkActive]="['active']" routerLink="/home">
 		<i class="home icon"></i>
 	</button>
-	<a class="item active" routerLink="/product">
+	<a class="item" [routerLinkActive]="['active']" routerLink="/products">
+		Ver productos
+	</a>
+	<a class="item" [routerLinkActive]="['active']" routerLink="/product">
 		Consultar producto
 	</a>
-	<a class="item" routerLink="/order">
-		Comprar
-	</a>
-	<a class="item" routerLink="/categories">
+	<a class="item" [routerLinkActive]="['active']" routerLink="/categories">
 		Categorías
 	</a>
-	<a class="item" routerLink="/products">
-		Ver productos
+	<a class="item" [routerLinkActive]="['active']" routerLink="/order">
+		Comprar
 	</a>
 	<div class="right menu">
 		<a class="ui item" routerLink="/">
