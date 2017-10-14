@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<div class="ui content">
+	<h1 class="main">Activa un nuevo canal de información</h1>
+	<div class="ui divider"></div>
+
+	<div class="custom-form">
+		<div class="html ui top attached segment">
+			<div class="ui top attached label">Activa un nuevo canal</div>
+			<div class="ui form">
+				
+				<div class="field">
+	                <label>Password</label>
+	                <input #password type="password" required>
+	            </div>
+
+				<button class="ui orange button" (click)="getNewToken(password.value)">
+					Activar
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<table class="ui celled striped table product-info" style="width: 50%" *ngIf="this.show">
+		<thead>
+			<tr>
+				<th colspan="2">
+					Token
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{token.value}}</td>
+			</tr>
+	</table>
+
+	<div style="width: 50%">
+	<table class="ui celled striped table product-info" *ngIf="this.showError">
+		<thead>
+			<tr>
+				<th colspan="2">
+					Error
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{error.msg}}</td>
+			</tr>
+		</tbody>
+
+	</table>
+	</div>
+
+</div>

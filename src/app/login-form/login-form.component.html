@@ -1,0 +1,33 @@
+
+<h1 id="HomeTitle">Bienvenido a Alquitrán Spa!</h1>
+
+
+ <div class="ui divider"></div>
+        
+<div id="login-form">
+    <div class="html ui top attached segment">
+        <form class="ui form">
+
+            <br>
+            <div class="field">
+                <label>Nombre</label>
+                <input #username type="text" required>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <input #password type="password" required>
+            </div>
+
+            <button class="ui orange button" type="submit" value="Login" (click)="Login($event,
+            username.value, password.value )">Login</button>
+            <button class="ui blue button" type="submit" value="Register" (click)="Register($event)">Register</button>         
+
+        </form>
+
+        <div class="ui top attached label">Ingresa tus credenciales</div>
+    </div>
+</div>
+
+
+

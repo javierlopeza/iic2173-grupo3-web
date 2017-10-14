@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="ui content">
+	<h1 class="main">Búsqueda de productos</h1>
+	<div class="ui divider"></div>
+
+	<div class="custom-form">
+		<div class="html ui top attached segment">
+			<div class="ui top attached label">Ingresa los datos del producto</div>
+			<div class="ui form">
+
+				<div class="field">
+					<label>Código del producto</label>
+					<input [(ngModel)]="product_id" type="number">
+				</div>
+
+				<button class="ui orange button" (click)="searchProduct()">
+					Buscar
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<table class="ui celled striped table product-info" *ngIf="product.success">
+		<thead>
+			<tr>
+				<th colspan="2">
+					Producto #{{product.id}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="table-label">Name</td>
+				<td>{{product.name}}</td>
+			</tr>
+			<tr>
+				<td class="table-label">Context</td>
+				<td>{{product.category.context}}</td>
+			</tr>
+			<tr>
+				<td class="table-label">Area</td>
+				<td>{{product.category.area}}</td>
+			</tr>
+			<tr>
+				<td class="table-label">Group</td>
+				<td>{{product.category.group}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="ui negative message" *ngIf="error_msg">
+		<div class="header">
+			Error en la búsqueda
+		</div>
+		<p>No hemos encontrado el producto ingresado.</p>
+	</div>
+
+</div>

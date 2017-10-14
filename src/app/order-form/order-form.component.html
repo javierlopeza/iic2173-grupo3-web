@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div class="ui content">
+
+	<h1 class="main">Compra de productos</h1>
+
+	<div class="ui divider"></div>
+
+	<div class="custom-form">
+		<div class="html ui top attached segment">
+			<div class="ui top attached label">Ingresa los datos para realizar la compra</div>
+			<div class="ui form">
+
+				<div class="field">
+					<label>Código del producto</label>
+					<input [(ngModel)]="code" type="text">
+				</div>
+
+				<div class="field">
+					<label>Dirección de entrega</label>
+					<input [(ngModel)]="address" type="text">
+				</div>
+
+				<button class="ui orange button" (click)="makeOrder()">
+					Comprar
+				</button>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="ui positive message">
+		<div class="header">
+			¡Compra exitosa!
+		</div>
+		<p>La compra se ha realizado con éxito.</p>
+	</div>
+
+	<div class="ui negative message">
+		<div class="header">
+			Error en la compra
+		</div>
+		<p>Ha ocurrido un error al procesar la compra.</p>
+	</div>
+
+</div>
