@@ -11,6 +11,13 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { UserService } from './user.service';
 import { AuthGuard} from './auth.guard';
+import { CategoriesComponent } from './categories/categories.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+import { ApiService } from './api.service';
+import { HttpModule } from '@angular/http';
+import { ProductsComponent } from './products/products.component';
+
 
 
 const appRoutes: Routes = [
@@ -33,6 +40,14 @@ const appRoutes: Routes = [
   {
     path: 'order',
     component: OrderFormComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
+  },
+  {
+    path: 'products',
+    component: ProductsComponent
   }
 ];
 
@@ -44,13 +59,18 @@ const appRoutes: Routes = [
     RegisterFormComponent,
     ProductFormComponent,
     OrderFormComponent,
+    CategoriesComponent,
+    NavbarComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpModule
+    
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, AuthGuard, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
