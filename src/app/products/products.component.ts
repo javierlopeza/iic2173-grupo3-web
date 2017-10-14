@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
 
   get_products() {
 
-    this.api.getData('productos').then(res => {
+    this.api.getData('productos', true).then(res => {
       this.data = res;
       console.log(this.data);
       this.products = this.data.map( x => x.name);

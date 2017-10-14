@@ -11,7 +11,7 @@
 
 				<div class="field">
 					<label>Código del producto</label>
-					<input [(ngModel)]="code" type="text">
+					<input [(ngModel)]="product_id" type="number">
 				</div>
 
 				<button class="ui orange button" (click)="searchProduct()">
@@ -21,28 +21,39 @@
 		</div>
 	</div>
 
-	<table class="ui celled striped table product-info">
+	<table class="ui celled striped table product-info" *ngIf="product.success">
 		<thead>
 			<tr>
 				<th colspan="2">
-					Producto #123
+					Producto #{{product.id}}
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td class="table-label">Nombre</td>
-				<td>Shampoo</td>
+				<td class="table-label">Name</td>
+				<td>{{product.name}}</td>
 			</tr>
 			<tr>
-				<td class="table-label">Descripción</td>
-				<td>The goal of using shampoo is to remove the unwanted build-up in the hair without stripping out so much sebum as to make hair unmanageable.</td>
+				<td class="table-label">Context</td>
+				<td>{{product.category.context}}</td>
 			</tr>
 			<tr>
-				<td class="table-label">Precio</td>
-				<td>$2.990</td>
+				<td class="table-label">Area</td>
+				<td>{{product.category.area}}</td>
+			</tr>
+			<tr>
+				<td class="table-label">Group</td>
+				<td>{{product.category.group}}</td>
 			</tr>
 		</tbody>
 	</table>
+
+	<div class="ui negative message" *ngIf="error_msg">
+		<div class="header">
+			Error en la búsqueda
+		</div>
+		<p>No hemos encontrado el producto ingresado.</p>
+	</div>
 
 </div>

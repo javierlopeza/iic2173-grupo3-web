@@ -9,7 +9,7 @@ import { ApiService } from '../api.service'
   
 })
 export class CategoriesComponent implements OnInit {
-  public data:any;
+  public data: any;
   public categories: any;
 
   constructor(private api: ApiService) { 
@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   get_categories() {
-    this.api.getData('categorias').then(res => {
+    this.api.getData('categorias', true).then(res => {
       this.data = res;
       this.categories = this.data.map( x => [x.context, x.area, x.group] );
       
