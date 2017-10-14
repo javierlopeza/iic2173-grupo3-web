@@ -9,6 +9,8 @@ import { UserService } from '../user.service';
 export class HomeComponent implements OnInit {
 
   username: any;
+  public active: any = { home: "ui icon button item active",
+  product: "item", order: "item",categories: "item", products: "item"};
 
   constructor(private user: UserService) {
     this.username = this.user.getUsername();

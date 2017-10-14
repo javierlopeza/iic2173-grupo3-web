@@ -11,6 +11,8 @@ import { UserService } from '../user.service';
 export class ProductFormComponent implements OnInit {
 
   code = '';
+  public active: any = { home: "ui icon button item", product: "item active",
+   order: "item",categories: "item", products: "item"};
 
   constructor(private router: Router, private user: UserService) {
   }

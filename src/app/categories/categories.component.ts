@@ -11,6 +11,8 @@ import { ApiService } from '../api.service'
 export class CategoriesComponent implements OnInit {
   public data:any;
   public categories: any;
+  public active: any = { home: "ui icon button item", product: "item",
+   order: "item",categories: "item active", products: "item"};
 
   constructor(private api: ApiService) { 
     
@@ -26,7 +28,7 @@ export class CategoriesComponent implements OnInit {
       this.data = res;
       this.categories = this.data.map( x => [x.context, x.area, x.group] );
       
-      console.log(this.data);
+      //console.log(this.data);
     }, (err) => {
       console.log(err);
       

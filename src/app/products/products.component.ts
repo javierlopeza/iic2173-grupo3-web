@@ -10,6 +10,8 @@ export class ProductsComponent implements OnInit {
 
   public data:any;
   public products:any;
+  public active: any = { home: "ui icon button item", product: "item", 
+  order: "item",categories: "item", products: "item active"};
 
   constructor(private api: ApiService) { }
 
@@ -21,9 +23,9 @@ export class ProductsComponent implements OnInit {
 
     this.api.getData('productos').then(res => {
       this.data = res;
-      console.log(this.data);
+      //console.log(this.data);
       this.products = this.data.map( x => x.name);
-      console.log("products", this.products);
+      //console.log("products", this.products);
     }, (err) => {
       console.log(err);
       
