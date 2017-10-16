@@ -12,8 +12,8 @@
 			<div class="ui form">
 
 				<div class="field">
-					<label>Código del producto</label>
-					<input [(ngModel)]="code" type="text">
+					<label>ID Producto</label>
+					<input [(ngModel)]="product_id" type="number">
 				</div>
 
 				<div class="field">
@@ -29,18 +29,18 @@
 		</div>
 	</div>
 
-	<div class="ui positive message">
+	<div class="ui positive message" *ngIf="success">
 		<div class="header">
 			¡Compra exitosa!
 		</div>
-		<p>La compra se ha realizado con éxito.</p>
+		<p>{{msg}}</p>
 	</div>
 
-	<div class="ui negative message">
+	<div class="ui negative message" *ngIf="success == false">
 		<div class="header">
 			Error en la compra
 		</div>
-		<p>Ha ocurrido un error al procesar la compra.</p>
+		<p>{{msg}}</p>
 	</div>
 
 </div>
