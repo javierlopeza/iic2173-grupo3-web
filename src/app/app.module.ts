@@ -26,10 +26,12 @@ const appRoutes: Routes = [
   {
     path: '',
     component: LoginFormComponent
+    
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -37,19 +39,23 @@ const appRoutes: Routes = [
   },
   {
     path: 'product',
-    component: ProductFormComponent
+    component: ProductFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'order',
-    component: OrderFormComponent
+    component: OrderFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'categories',
-    component: CategoriesComponent
+    component: CategoriesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'products',
-    component: ProductsComponent
+    component: ProductsComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
