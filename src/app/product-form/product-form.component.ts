@@ -11,6 +11,7 @@ import { ApiService } from './../api.service';
 })
 export class ProductFormComponent implements OnInit {
 
+  token : any;
   product_id = null;
   error_msg = null;
   product = {
@@ -37,7 +38,8 @@ export class ProductFormComponent implements OnInit {
       return;
     }
     // Request product by ID
-    this.api.getData(`/product/${this.product_id}`, true)
+    this.token = localStorage.getItem('token');
+    this.api.getData(`/product/${this.product_id}`, true, this.token)
     .then(data => {
       if (data['success']) {
         this.product.id = data['id'];

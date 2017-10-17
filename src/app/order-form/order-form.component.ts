@@ -15,6 +15,7 @@ export class OrderFormComponent implements OnInit {
   address = '';
   success = null;
   msg = '';
+  token :any;
 
   constructor( private router: Router, private user: UserService, private api: ApiService) {
   }
@@ -32,7 +33,8 @@ export class OrderFormComponent implements OnInit {
       product_id: this.product_id,
       address: this.address
     };
-    this.api.postData(`/transaction`, body, true)
+    this.token = localStorage.getItem('token');
+    this.api.postData(`/transaction`, body, true, this.token)
     .then(data => {
       if (data['success']) {
         this.success = true;

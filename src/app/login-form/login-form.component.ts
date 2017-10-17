@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { UserService } from '../user.service';
+import { ApiService } from '../api.service';
 
 
 @Component({
@@ -10,27 +11,66 @@ import { UserService } from '../user.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor( private router:Router, private user:UserService) { }
+  result: any;
+  userCredentials = {"username": {}, "password": {}};
+  responseData: any
+  path: any = 'signin'
+  password: any;
+  username: any;
+  success: any = null;
+  msg = "";
+
+  constructor( private router:Router, private user:UserService,
+  private api: ApiService) { }
 
   ngOnInit() {
   }
 
 
-  Login(event, username, pass) {
-    console.log(event);
-    let user = username;
-    let password = pass;
+  Login() {
+    console.log();
+    
+    this.userCredentials.username = this.username;
+    this.userCredentials.password = this.password;
+
+    console.log(this.userCredentials, "las credenciales");
+
+    if (this.username && this.password) {
+    
     this.user.setUserLoggedIn();
-    this.user.setUsername(user);
-    this.router.navigate(['home']);
-    event.preventDefault();
-    console.log("user:", user, "pass:", pass);
+    this.user.setUsername(this.username);
+    this.api.postData(`/${this.path}`,this.userCredentials, false, "").then((result) => {
+      this.responseData = result;
+      if (this.responseData.success == false ) {
+        this.success = false;
+        this.msg = "Credenciales inválidas, intente nuevamente";
+      }
+      else{
+      localStorage.setItem('token', this.responseData.token);
+      this.router.navigate(['home']);      
+      console.log("user:", this.username, "pass:", this.password);
+      this.success = true;}
+      
+    }, (err) => {
+      console.log(err);
+
+      this.success = false;
+      
+      // Error log
+    });
+
+  }
+  else {
+    this.success = false;
+    this.msg = "Por favor ingrese credenciales";
+
   }
 
-  Register(event) {
-    console.log(event);
-    event.preventDefault();
-    console.log("hello world");
+    
+  }
+
+  Register() {
+    console.log();    
     this.router.navigate(['register']);
   }
 }
