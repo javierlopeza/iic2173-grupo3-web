@@ -15,6 +15,10 @@ export class UserService {
 
   }
 
+  setUserLogout() {
+    this.isUserLoggedIn = false;
+  }
+
   getUserLoggedIn(){
     return this.isUserLoggedIn;
   }

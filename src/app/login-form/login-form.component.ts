@@ -37,8 +37,7 @@ export class LoginFormComponent implements OnInit {
 
     if (this.username && this.password) {
     
-    this.user.setUserLoggedIn();
-    this.user.setUsername(this.username);
+    
     this.api.postData(`/${this.path}`,this.userCredentials, false, "").then((result) => {
       this.responseData = result;
       if (this.responseData.success == false ) {
@@ -46,6 +45,8 @@ export class LoginFormComponent implements OnInit {
         this.msg = "Credenciales inválidas, intente nuevamente";
       }
       else{
+      this.user.setUserLoggedIn();
+      this.user.setUsername(this.username);
       localStorage.setItem('token', this.responseData.token);
       this.router.navigate(['home']);      
       console.log("user:", this.username, "pass:", this.password);
