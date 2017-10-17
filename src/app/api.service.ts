@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class ApiService {
 
   private apiRoot = 'https://arqss8.ing.puc.cl/api';
-  //private apiRoot = 'http://localhost:3000/api';
+  // private apiRoot = 'http://localhost:3000/api';
   public data: any = {};
 
   constructor(private _http: Http) { }
@@ -16,13 +16,12 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       const headers = new Headers();
       if (token_required) {
-        // tslint:disable-next-line:max-line-length
         headers.append('Authorization', token);
       }
       const options = new RequestOptions({ headers: headers, method: 'get' });
-      
+
       const apiURL = `${this.apiRoot}${request_path}`;
-      console.log(apiURL, "URL REQUESTED");
+      console.log('GET request to', apiURL);
       this._http.get(apiURL, options)
         .toPromise()
         .then(res => {
@@ -40,12 +39,11 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       const headers = new Headers();
       if (token_required) {
-        // tslint:disable-next-line:max-line-length
         headers.append('Authorization', token);
       }
       const options = new RequestOptions({ headers: headers, method: 'post' });
       const apiURL = `${this.apiRoot}${request_path}`;
-      console.log(apiURL, "URL REQUESTED");
+      console.log('POST request to', apiURL);
 
       this._http.post(apiURL, body, options)
         .toPromise()
