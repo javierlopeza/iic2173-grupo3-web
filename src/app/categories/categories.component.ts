@@ -10,6 +10,7 @@ import { ApiService } from '../api.service';
 export class CategoriesComponent implements OnInit {
   categories: any = [];
   page = 1;
+  token: any;
 
   constructor(private api: ApiService) { }
 
@@ -19,7 +20,8 @@ export class CategoriesComponent implements OnInit {
 
   getCategories() {
     // Request products
-    this.api.getData(`/categories?page=${this.page}`, true)
+    this.token = localStorage.getItem('token');
+    this.api.getData(`/categories?page=${this.page}`, true, this.token)
     .then(data => {
       if (data[0]) {
         this.categories = data;

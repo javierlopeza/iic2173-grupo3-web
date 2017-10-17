@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { UserService } from '../user.service';
+import { ApiService } from '../api.service';
 
 
 @Component({
@@ -10,7 +11,13 @@ import { UserService } from '../user.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor( private router:Router, private user:UserService) { }
+  result: any;
+  userCredentials = {"username": {}, "password": {}};
+  responseData: any
+  path: any = 'signin'
+
+  constructor( private router:Router, private user:UserService,
+  private api: ApiService) { }
 
   ngOnInit() {
   }
@@ -18,13 +25,29 @@ export class LoginFormComponent implements OnInit {
 
   Login(event, username, pass) {
     console.log(event);
-    let user = username;
-    let password = pass;
+    
+    this.userCredentials.username = username;
+    this.userCredentials.password = pass;
+
+    console.log(this.userCredentials, "las credenciales");
+
+    
+    
     this.user.setUserLoggedIn();
-    this.user.setUsername(user);
+    this.user.setUsername(username);
+    this.api.postData(`/${this.path}`,this.userCredentials, false, "").then((result) => {
+      this.responseData = result;
+      localStorage.setItem('token', this.responseData.token);
+      
+    }, (err) => {
+      console.log(err);
+      
+      // Error log
+    });
+
     this.router.navigate(['home']);
     event.preventDefault();
-    console.log("user:", user, "pass:", pass);
+    console.log("user:", username, "pass:", pass);
   }
 
   Register(event) {

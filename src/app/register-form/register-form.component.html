@@ -5,19 +5,10 @@
             <br>
     
             <div class="field">
-                <label>Name</label>
-                <input #name type="text" required>
-            </div>
-
-            <div class="field">
                 <label>Username</label>
                 <input #user type="text" required>
             </div>
 
-            <div class="field">
-                <label>Email</label>
-                <input #email type="text" required>
-            </div>
             
             <div class="field">
                 <label>Password</label>
@@ -26,7 +17,7 @@
             
             <div class="field">
                 <button class="ui blue button" type="submit" value="Register" 
-                (click)="RegisterUser($event, name.value, user.value, email.value, pass.value)">Register</button>
+                (click)="RegisterUser($event, user.value, pass.value)">Register</button>
             
             </div>
             
