@@ -6,28 +6,36 @@
         
 <div id="login-form">
     <div class="html ui top attached segment">
-        <form class="ui form">
+        <div class="ui form">
 
             <br>
             <div class="field">
                 <label>Nombre</label>
-                <input #username type="text" required>
+                
+                <input [(ngModel)]="username" type="text" required>
             </div>
 
             <div class="field">
                 <label>Password</label>
-                <input #password type="password" required>
+                <input [(ngModel)]="password" type="password" required>                
             </div>
 
-            <button class="ui orange button" type="submit" value="Login" (click)="Login($event,
-            username.value, password.value )">Login</button>
-            <button class="ui blue button" type="submit" value="Register" (click)="Register($event)">Register</button>         
+            <button class="ui orange button" type="submit" value="Login" (click)="Login()">
+                Login
+            </button>
+            <button class="ui blue button" type="submit" value="Register" (click)="Register()">Register</button>         
 
-        </form>
+        </div>
 
         <div class="ui top attached label">Ingresa tus credenciales</div>
     </div>
 </div>
 
+<div class="ui negative message" *ngIf="success == false">
+		<div class="header">
+			Error al iniciar sesion
+		</div>
+		<p>{{msg}}</p>
+	</div>
 
 

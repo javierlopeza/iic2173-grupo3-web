@@ -15,6 +15,10 @@ export class LoginFormComponent implements OnInit {
   userCredentials = {"username": {}, "password": {}};
   responseData: any
   path: any = 'signin'
+  password: any;
+  username: any;
+  success: any = null;
+  msg = "";
 
   constructor( private router:Router, private user:UserService,
   private api: ApiService) { }
@@ -23,37 +27,50 @@ export class LoginFormComponent implements OnInit {
   }
 
 
-  Login(event, username, pass) {
-    console.log(event);
+  Login() {
+    console.log();
     
-    this.userCredentials.username = username;
-    this.userCredentials.password = pass;
+    this.userCredentials.username = this.username;
+    this.userCredentials.password = this.password;
 
     console.log(this.userCredentials, "las credenciales");
 
-    
+    if (this.username && this.password) {
     
     this.user.setUserLoggedIn();
-    this.user.setUsername(username);
+    this.user.setUsername(this.username);
     this.api.postData(`/${this.path}`,this.userCredentials, false, "").then((result) => {
       this.responseData = result;
+      if (this.responseData.success == false ) {
+        this.success = false;
+        this.msg = "Credenciales inválidas, intente nuevamente";
+      }
+      else{
       localStorage.setItem('token', this.responseData.token);
+      this.router.navigate(['home']);      
+      console.log("user:", this.username, "pass:", this.password);
+      this.success = true;}
       
     }, (err) => {
       console.log(err);
+
+      this.success = false;
       
       // Error log
     });
 
-    this.router.navigate(['home']);
-    event.preventDefault();
-    console.log("user:", username, "pass:", pass);
+  }
+  else {
+    this.success = false;
+    this.msg = "Por favor ingrese credenciales";
+
   }
 
-  Register(event) {
-    console.log(event);
-    event.preventDefault();
-    console.log("hello world");
+    
+  }
+
+  Register() {
+    console.log();    
     this.router.navigate(['register']);
   }
 }

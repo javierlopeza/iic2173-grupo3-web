@@ -1,31 +1,53 @@
+<h1 id="HomeTitle">Bienvenido a Alquitrán Spa!</h1>
+
+
+ <div class="ui divider"></div>
+
 <div id="register-form">
     <div class="html ui top attached segment">
-        <form class="ui form">
+        <div class="ui form">
 
             <br>
     
             <div class="field">
                 <label>Username</label>
-                <input #user type="text" required>
+                <input [(ngModel)]="username" type="text" required> 
             </div>
 
             
             <div class="field">
                 <label>Password</label>
-                <input #pass type="password" required>
+                <input [(ngModel)]="password" type="password" required> 
+                
             </div>
             
             <div class="field">
                 <button class="ui blue button" type="submit" value="Register" 
-                (click)="RegisterUser($event, user.value, pass.value)">Register</button>
+                (click)="RegisterUser()">Register</button>
             
             </div>
             
-        </form>
+        </div>
         
         <div class="ui top attached label">Registra tu cuenta para acceder a Alquitrán Spa</div>
     </div>
 </div>
+
+<div class="ui positive message" *ngIf="success">
+		<div class="header">
+			¡Registro exitoso!
+		</div>
+		<p>{{msg}}</p>
+	</div>
+
+
+<div class="ui negative message" *ngIf="success == false">
+		<div class="header">
+			Error en el registro
+		</div>
+		<p>{{msg}}</p>
+	</div>
+
 
 
 

@@ -13,3 +13,8 @@
     background-color: #f2711c;
     color: #fff;
 }
+
+.message {
+    width: 50%;
+    margin-left: 25%;
+}
