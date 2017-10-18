@@ -1,0 +1,21 @@
+#register-form {
+    
+    width: 50%;
+    margin: 0 auto;
+    
+}
+
+.ui.attached.label {
+    background-color: #f2711c;
+    color: #fff;
+}
+
+#HomeTitle {
+    padding: 20px;
+    text-align: center;
+}
+
+.message {
+    width: 50%;
+    margin-left: 25%;
+}
