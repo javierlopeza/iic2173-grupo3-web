@@ -23,6 +23,7 @@ export class ProductFormComponent implements OnInit {
         group: null
     },
     name: null,
+    price: null,
     success: false
   };
 
@@ -45,6 +46,7 @@ export class ProductFormComponent implements OnInit {
         this.product.id = data['id'];
         this.product.category = data['category'];
         this.product.name = data['name'];
+        this.product.price = data['price'];
         this.product.success = true;
         this.error_msg = false;
       } else {
