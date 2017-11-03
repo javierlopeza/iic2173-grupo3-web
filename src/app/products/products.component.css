@@ -1,9 +1,59 @@
-.table {
+.productsTable {
     width: 70%;
-    margin-left: 15%;
+    margin-left: 5%;
     margin-top: 25px;
 }
+
+.shoppingTable {
+    width: 80%;    
+    margin-top: 25px;
+
+}
+
+#amount {
+    
+    text-align: center;
+}
+
 .more {
-    margin-left: 15%;    
+    
     margin-top: 25px;    
+}
+
+.main {
+    padding: 40px;
+}
+
+#pagesButtons {
+    margin-left: 5%;    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }

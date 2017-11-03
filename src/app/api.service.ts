@@ -9,8 +9,11 @@ export class ApiService {
   private apiRoot = 'https://arqss8.ing.puc.cl/api';
   // private apiRoot = 'http://localhost:3000/api';
   public data: any = {};
+  shoppingCart: any = [];
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http) { 
+    
+  }
 
   getData(request_path: string, token_required: boolean, token) {
     return new Promise((resolve, reject) => {
