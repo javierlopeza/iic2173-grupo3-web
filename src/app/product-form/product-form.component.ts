@@ -11,8 +11,8 @@ import { ApiService } from './../api.service';
 })
 export class ProductFormComponent implements OnInit {
 
-  token : any;
-  product_id = null;
+  token: any;
+  product_name = null;
   error_msg = null;
   product = {
     id: null,
@@ -34,13 +34,13 @@ export class ProductFormComponent implements OnInit {
   }
 
   searchProduct() {
-    // Validate ID (must be a number)
-    if (/^\d+$/.test(this.product_id) === false) {
+    // Validate product name
+    if (!/^[A-Za-záéíóúäëïöüàèìòù\-\ \'0-9]{1,}$/.test(this.product_name) === false) {
       return;
     }
-    // Request product by ID
+    // Request product by name
     this.token = localStorage.getItem('token');
-    this.api.getData(`/product/${this.product_id}`, true, this.token)
+    this.api.getData(`/product/${this.product_name}`, true, this.token)
     .then(data => {
       if (data['success']) {
         this.product.id = data['id'];
