@@ -1,3 +1,4 @@
+import { HistoryComponent } from './history/history.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -62,7 +63,12 @@ const appRoutes: Routes = [
     path: 'checkout',
     component: CheckoutComponent//,
     //canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'history',
+    component: HistoryComponent//,
+    //canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
@@ -77,13 +83,13 @@ const appRoutes: Routes = [
     NavbarComponent,
     ProductsComponent,
     CheckoutComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     FormsModule,
-    HttpModule
-    
+    HttpModule,
   ],
   providers: [UserService, AuthGuard, ApiService],
   bootstrap: [AppComponent]

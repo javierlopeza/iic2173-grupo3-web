@@ -26,14 +26,11 @@ export class ProductsComponent implements OnInit {
     // Request products
     this.token = localStorage.getItem('token');
     this.api.getData(`/products?page=${this.page}`, true, this.token)
-    .then(data => {      
+    .then(data => {
       if (data[0]) {
-        this.products = data;       
-         
-            
+        this.products = data;
       } else {
         this.page--;
-        this.getProducts();
       }
     });
   }
