@@ -1,0 +1,21 @@
+.main {
+    padding: 40px;
+}
+.shoppingTable {
+    width: 60%;    
+    margin-left: 20%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.custom-form {
+    width: 60%;
+}
+
+tfoot tr th {
+    font-weight: bold;
+}

@@ -1,46 +1,117 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <app-navbar></app-navbar>
 
-<div class="ui content">
+<h1 class="main">Compra los mejores productos en Arquitrán!</h1>
 
-	<h1 class="main">Compra de productos</h1>
+<div class="row">
+  <div class="column left">
 
-	<div class="ui divider"></div>
+    <table class="ui striped table productsTable">
+      <thead>
+        <tr>
+          <th colspan="6">
+            Productos - Page {{page}}
+          </th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th></th>
+          <th id="amount">Cantidad</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            <button *ngIf="!drugsCategories.includes(product.category)" class="ui green button more qty" (click)="remove(product)">
+              -
+            </button>
+            <button *ngIf="!drugsCategories.includes(product.category)" class="ui blue button more qty" (click)="add(product)">
+              +
+            </button>
+          </td>
 
-	<div class="custom-form">
-		<div class="html ui top attached segment">
-			<div class="ui top attached label">Ingresa los datos para realizar la compra</div>
-			<div class="ui form">
+          <td id="amount">
+            <p>{{product["amount"]}}</p>
+          </td>
+          <td>
+            <button *ngIf="!drugsCategories.includes(product.category)" class="ui orange button more add" (click)="addProductToCart(product)">
+              Agregar al carro
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-				<div class="field">
-					<label>ID Producto</label>
-					<input [(ngModel)]="product_id" type="number">
-				</div>
+    <div id="pagesButtons">
+      <button class="ui blue button more" (click)="previousPage()">
+        Previous Page
+      </button>
+      <button class="ui green button more" (click)="nextPage()">
+        Next Page
+      </button>
+    </div>
 
-				<div class="field">
-					<label>Dirección de entrega</label>
-					<input [(ngModel)]="address" type="text">
-				</div>
+  </div>
+  <div class="column right">
+    <h2>
+      <i class="material-icons">shopping_cart</i>
+      Carro de compras
+    </h2>
+    <h3 id="empty" [hidden]="hide">El carro está vacío!</h3>
 
-				<button class="ui orange button" (click)="makeOrder()">
-					Comprar
-				</button>
+    <table class="ui striped table shoppingTable">
+      <thead>
 
-			</div>
-		</div>
-	</div>
+      </thead>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of api.shoppingCart">
+          <td>{{product.name}}</td>
+          <td>x{{product.amount}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Total: </th>
+          <th>${{api.sum}}</th>
+        </tr>
+      </tfoot>
+    </table>
 
-	<div class="ui positive message" *ngIf="success">
-		<div class="header">
-			¡Compra exitosa!
-		</div>
-		<p>{{msg}}</p>
-	</div>
+    <button class="ui green button more" (click)="checkout()">
+      Checkout
+    </button>
+    <button class="ui red button more" (click)="emptyCart()">
+      Vaciar carro
+    </button>
+  </div>
 
-	<div class="ui negative message" *ngIf="success == false">
-		<div class="header">
-			Error en la compra
-		</div>
-		<p>{{msg}}</p>
-	</div>
+</div>
 
+<div class="ui positive message" *ngIf="success">
+  <div class="header">
+    ¡Compra exitosa!
+  </div>
+  <p>{{msg}}</p>
+</div>
+
+<div class="ui negative message" *ngIf="success == false">
+  <div class="header">
+    Error en la compra
+  </div>
+  <p>{{msg}}</p>
 </div>

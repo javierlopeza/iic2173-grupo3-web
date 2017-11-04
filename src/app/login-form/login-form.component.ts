@@ -24,12 +24,22 @@ export class LoginFormComponent implements OnInit {
     private api: ApiService) { }
 
   ngOnInit() {
-  }
 
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['home']);
+    }
+
+  }
 
   Login() {
     this.userCredentials.username = this.username;
     this.userCredentials.password = this.password;
+
+    if (!/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(this.username)) {
+      this.success = false;
+      this.msg = 'Por favor ingrese un email válido';
+      return;
+    }
 
     if (this.username && this.password) {
       this.api.postData(`/${this.path}`, this.userCredentials, false, '').then(
@@ -41,6 +51,7 @@ export class LoginFormComponent implements OnInit {
           } else {
             this.user.setUserLoggedIn();
             this.user.setUsername(this.username);
+            localStorage.setItem('username', this.username);
             localStorage.setItem('token', this.responseData.token);
             this.router.navigate(['home']);
             this.success = true;

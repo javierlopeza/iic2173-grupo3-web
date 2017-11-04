@@ -3,7 +3,34 @@
     margin-left: 15%;
     margin-top: 25px;
 }
-.more {
-    margin-left: 15%;    
+.more {  
     margin-top: 25px;    
+}
+
+.main {
+    padding: 40px;
+}
+
+#pagesButtons {
+    margin-left: 15%;
+    margin-bottom: 50px; 
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#empty {
+    color: red;
 }

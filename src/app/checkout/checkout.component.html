@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<h1 class="main">Resumen de tus compras:</h1>
+
+<table class="ui striped table shoppingTable">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>          
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of api.shoppingCart">
+        <td>{{product.name}}</td>
+        <td>x{{product.amount}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+          <th>Total: </th>
+          <th>${{api.sum}}</th>
+        </tr>
+      </tfoot>
+  </table>
+
+<div class="custom-form">
+  <div class="html ui top attached segment">
+    <div class="ui top attached label">Introduce los datos de envío para finalizar la compra</div>
+    <div class="ui form">
+
+      <div class="field">
+        <label>Dirección de entrega</label>
+        <input [(ngModel)]="address" type="text">
+      </div>
+
+      <button class="ui orange button" (click)="makeOrder()">
+        Comprar
+      </button>
+
+    </div>
+  </div>
+</div>
