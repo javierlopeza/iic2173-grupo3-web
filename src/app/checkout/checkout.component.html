@@ -6,18 +6,24 @@
     <thead>
       <tr>
         <th>Producto</th>
+        <th>Precio Unitario</th>          
         <th>Cantidad</th>          
+        <th>Subtotal</th>          
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of api.shoppingCart">
         <td>{{product.name}}</td>
+        <td>${{product.price}}</td>
         <td>x{{product.amount}}</td>
+        <td>${{product.price * product.amount}}</td>
       </tr>
     </tbody>
     <tfoot>
         <tr>
-          <th>Total: </th>
+          <th></th>
+          <th></th>
+          <th class="right aligned">TOTAL</th>
           <th>${{api.sum}}</th>
         </tr>
       </tfoot>
