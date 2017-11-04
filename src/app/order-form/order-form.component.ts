@@ -83,7 +83,6 @@ export class OrderFormComponent implements OnInit {
           this.products = this.products.filter(product => !this.drugsCategories.includes(product.category));
         } else {
           this.page--;
-          this.getProducts();
         }
       });
   }
@@ -117,7 +116,6 @@ export class OrderFormComponent implements OnInit {
       product.amount = 0;
       // + is unary cast operator
       this.api.sum += +p.price * +p.amount;
-
     }
   }
 
