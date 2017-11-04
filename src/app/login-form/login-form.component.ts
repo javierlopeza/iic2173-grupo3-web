@@ -24,6 +24,11 @@ export class LoginFormComponent implements OnInit {
     private api: ApiService) { }
 
   ngOnInit() {
+
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['home']);
+    }
+
   }
 
 
