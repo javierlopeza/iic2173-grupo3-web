@@ -29,8 +29,8 @@
         <tr *ngFor="let product of products">
           <td>{{product.id}}</td>
           <td>{{product.name}}</td>
-          <td>{{product.price}}</td>
-          <td>
+          <td>${{product.price}}</td>
+          <td class="center aligned">
             <button *ngIf="!drugsCategories.includes(product.category)" class="ui green button more qty" (click)="remove(product)">
               -
             </button>
@@ -75,18 +75,24 @@
       <thead>
         <tr>
           <th>Producto</th>
+          <th>Precio Unitario</th>
           <th>Cantidad</th>
+          <th>Subtotal</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let product of api.shoppingCart">
           <td>{{product.name}}</td>
+          <td>${{product.price}}</td>
           <td>x{{product.amount}}</td>
+          <td>${{product.price * product.amount}}</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th>Total: </th>
+          <th></th>
+          <th></th>
+          <th>TOTAL</th>
           <th>${{api.sum}}</th>
         </tr>
       </tfoot>
