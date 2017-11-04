@@ -2,17 +2,17 @@
 
 <app-navbar></app-navbar>
 
-<h1 class="main">Compra los mejores productos en Arquitrán!</h1>
+<h1 class="main">Productos disponibles en Arquitrán!</h1>
 
 	<div class="row">
     <div class="column left">
 
     
 
-  <table class="ui striped table productsTable">
+  <table class="ui striped table">
     <thead>
       <tr>
-        <th colspan="6">
+        <th colspan="3">
           Productos - Page {{page}}
         </th>
       </tr>
@@ -26,38 +26,17 @@
           Nombre
         </th>
         <th>
-          
-        </th>
-      
-        <th id="amount">
-          Cantidad
-        </th>
-        <th>
-            
-        </th>
+          Precio
+        </th>       
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
         <td>{{product.id}}</td>
         <td>{{product.name}}</td>
-        <td>
-          <button class="ui green button more" (click)="remove(product)">
-              -
-          </button>
-          <button class="ui blue button more" (click)="add(product)">
-              +
-          </button>
-          
-        </td>
-        
-        <td id="amount">{{product["amount"]}}</td>
-        <td>
-          <button class="ui orange button more" (click)="addProductToCart(product)">
-              Agregar al carro
-          </button>
-          
-        </td>
+        <td>{{product.price}}</td>
+       
+       
       </tr>
     </tbody>
   </table>
@@ -73,48 +52,6 @@
   </div>
 
 </div>
-  <div class="column right">
-    <h2>
-      <i class="material-icons">shopping_cart</i>
-        Carro de compras
-    </h2>
-
-    <table class="ui striped table shoppingTable">
-        <thead>
-         
-        </thead>
-        <thead>
-          <tr>
-            <th>
-              Producto
-            </th>
-            <th>
-              Cantidad
-            </th>          
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <td>Total: </td>
-            <td>{{sum}}</td>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr *ngFor="let product of api.shoppingCart">
-            <td>{{product.name}}</td>
-            <td>{{product.amount}}</td>
-            
-            
-           
-          </tr>
-        </tbody>
-      </table>
-      <button class="ui green button more" (click)="checkout()">
-          Comprar
-      </button>
-      <button class="ui red button more" (click)="emptyCart()">
-          Vaciar carro
-      </button>
-  </div>
+ 
   
 </div>

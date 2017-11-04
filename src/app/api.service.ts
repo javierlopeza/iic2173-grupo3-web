@@ -10,9 +10,33 @@ export class ApiService {
   // private apiRoot = 'http://localhost:3000/api';
   public data: any = {};
   shoppingCart: any = [];
+  sum: number = 0;
 
   constructor(private _http: Http) { 
     
+  }
+
+  getDataCustom(request_path: string, token_required: boolean, token) {
+    return new Promise((resolve, reject) => {
+      const headers = new Headers();
+      if (token_required) {
+        headers.append('Authorization', token);
+      }
+      const options = new RequestOptions({ headers: headers, method: 'get' });
+
+      const apiURL = `http://arqss17.ing.puc.cl:3000/${request_path}`;
+      console.log('GET request to', apiURL);
+      this._http.get(apiURL, options)
+        .toPromise()
+        .then(res => {
+          this.data = res.json();
+          resolve(this.data);
+        })
+        .catch(err => {
+          this.data = err.json();
+          resolve(this.data);
+        });
+    });
   }
 
   getData(request_path: string, token_required: boolean, token) {
