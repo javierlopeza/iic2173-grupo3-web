@@ -68,3 +68,7 @@ body {
 #empty {
     color: red;
 }
+
+tfoot tr th {
+    font-weight: bold;
+}

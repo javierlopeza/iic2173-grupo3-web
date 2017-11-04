@@ -78,19 +78,20 @@
           <th>Cantidad</th>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <td>Total: </td>
-          <td>${{api.sum}}</td>
-        </tr>
-      </tfoot>
       <tbody>
         <tr *ngFor="let product of api.shoppingCart">
           <td>{{product.name}}</td>
           <td>x{{product.amount}}</td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <th>Total: </th>
+          <th>${{api.sum}}</th>
+        </tr>
+      </tfoot>
     </table>
+
     <button class="ui green button more" (click)="checkout()">
       Checkout
     </button>
