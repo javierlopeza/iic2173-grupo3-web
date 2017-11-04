@@ -26,6 +26,11 @@ export class OrderFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (!cart) {
+      this.api.shoppingCart = [];
+      this.api.sum = 0;
+    }
     this.getCategories();
   }
 
@@ -115,7 +120,10 @@ export class OrderFormComponent implements OnInit {
       this.api.shoppingCart.push(p);
       product.amount = 0;
       // + is unary cast operator
-      this.api.sum += +p.price * +p.amount;
+      this.api.sum += +p.price * +p.amount;      
+      localStorage.setItem('cart', JSON.stringify(this.api.shoppingCart));
+      
+      
     }
   }
 
