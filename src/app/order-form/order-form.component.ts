@@ -18,6 +18,7 @@ export class OrderFormComponent implements OnInit {
   token: any;
   products: any = [];
   page = 1;
+  categoriesPage = 1;
   drugsCategories: any = [];
   hide = true;
 
@@ -53,19 +54,22 @@ export class OrderFormComponent implements OnInit {
 
   getCategories() {
     // Request categories
-    let categories = [];
-    let page = 1;
-    let categoriesLeft = true;
     this.token = localStorage.getItem('token');
 
-    this.api.getDataCustom(`categories`, true, this.token)
+    this.api.getData(`/categories?page=${this.categoriesPage}`, true, this.token)
       .then(data => {
-        this.drugsCategories = data;
-        this.drugsCategories = this.drugsCategories
-          .filter(category => category.context === "MEDICAMENTOS")
-          .map(category => category.id);
-        return this.drugsCategories;
-      }).then(x => this.getProducts());
+        let dataArray: any = data;
+        if (dataArray.length) {
+          dataArray = dataArray.filter(category => category.context === 'MEDICAMENTOS').map(category => category.id);
+          this.drugsCategories = this.drugsCategories.concat(dataArray);
+          this.categoriesPage ++;
+          this.getCategories();
+        } else {
+          console.log('Retrieved all categories');
+          // console.log(this.drugsCategories);
+          this.getProducts();
+        }
+      });
   }
 
   getProducts() {
@@ -76,8 +80,7 @@ export class OrderFormComponent implements OnInit {
         if (data[0]) {
           this.products = data;
           this.products.map(product => product.amount = 0);
-          this.products = this.products
-            .filter(product => !this.drugsCategories.includes(product.category));
+          this.products = this.products.filter(product => !this.drugsCategories.includes(product.category));
         } else {
           this.page--;
           this.getProducts();
@@ -99,9 +102,9 @@ export class OrderFormComponent implements OnInit {
   addProductToCart(product) {
     if (product.amount > 0) {
       // this makes a copy of the object, otherwise if we add product i'll be a reference
-      let p = JSON.parse(JSON.stringify(product));
+      const p = JSON.parse(JSON.stringify(product));
 
-      for (let item of this.api.shoppingCart) {
+      for (const item of this.api.shoppingCart) {
         if (p.id === item.id) {
           item.amount += p.amount;
           product.amount = 0;
@@ -131,8 +134,7 @@ export class OrderFormComponent implements OnInit {
   checkout() {
     if (this.api.shoppingCart.length > 0) {
       this.router.navigate(['checkout']);
-    }
-    else {
+    } else {
       this.hide = false;
     }
   }
