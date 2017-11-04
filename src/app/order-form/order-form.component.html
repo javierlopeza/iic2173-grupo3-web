@@ -4,142 +4,114 @@
 
 <h1 class="main">Compra los mejores productos en Arquitrán!</h1>
 
-	<div class="row">
-    <div class="column left">
+<div class="row">
+  <div class="column left">
 
-    
-
-  <table class="ui striped table productsTable">
-    <thead>
-      <tr>
-        <th colspan="6">
-          Productos - Page {{page}}
-        </th>
-      </tr>
-    </thead>
-    <thead>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Nombre
-        </th>
-        <th>
-          Precio
-        </th>
-        <th>
-          
-        </th>
-      
-        <th id="amount">
-          Cantidad
-        </th>
-        <th>
-            
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{product.id}}</td>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>
-          
-          <button *ngIf="!drugsCategories.includes(product.category)"
-           class="ui green button more" (click)="remove(product)">
+    <table class="ui striped table productsTable">
+      <thead>
+        <tr>
+          <th colspan="6">
+            Productos - Page {{page}}
+          </th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th></th>
+          <th id="amount">Cantidad</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            <button *ngIf="!drugsCategories.includes(product.category)" class="ui green button more qty" (click)="remove(product)">
               -
-          </button>
-          <button *ngIf="!drugsCategories.includes(product.category)"
-          class="ui blue button more" (click)="add(product)">
+            </button>
+            <button *ngIf="!drugsCategories.includes(product.category)" class="ui blue button more qty" (click)="add(product)">
               +
-          </button>
-          
-        </td>
-        
-        <td id="amount">
-          <p>{{product["amount"]}}</p>
-        </td>
-        <td>
-          <button *ngIf="!drugsCategories.includes(product.category)"
-          class="ui orange button more" (click)="addProductToCart(product)">
-              Agregar al carro
-          </button>
-          
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            </button>
+          </td>
 
-  <div id="pagesButtons">
+          <td id="amount">
+            <p>{{product["amount"]}}</p>
+          </td>
+          <td>
+            <button *ngIf="!drugsCategories.includes(product.category)" class="ui orange button more add" (click)="addProductToCart(product)">
+              Agregar al carro
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="pagesButtons">
       <button class="ui blue button more" (click)="previousPage()">
-          Previous Page
+        Previous Page
       </button>
       <button class="ui green button more" (click)="nextPage()">
-          Next Page
+        Next Page
       </button>
+    </div>
 
   </div>
-
-</div>
   <div class="column right">
     <h2>
       <i class="material-icons">shopping_cart</i>
-        Carro de compras
+      Carro de compras
     </h2>
     <h3 id="empty" [hidden]="hide">El carro está vacío!</h3>
 
     <table class="ui striped table shoppingTable">
-        <thead>
-         
-        </thead>
-        <thead>
-          <tr>
-            <th>
-              Producto
-            </th>
-            <th>
-              Cantidad
-            </th>          
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <td>Total: </td>
-            <td>${{api.sum}}</td>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr *ngFor="let product of api.shoppingCart">
-            <td>{{product.name}}</td>
-            <td>x{{product.amount}}</td>
-            
-            
-           
-          </tr>
-        </tbody>
-      </table>
-      <button class="ui green button more" (click)="checkout()">
-          Checkout
-      </button>
-      <button class="ui red button more" (click)="emptyCart()">
-          Vaciar carro
-      </button>
+      <thead>
+
+      </thead>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of api.shoppingCart">
+          <td>{{product.name}}</td>
+          <td>x{{product.amount}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Total: </th>
+          <th>${{api.sum}}</th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <button class="ui green button more" (click)="checkout()">
+      Checkout
+    </button>
+    <button class="ui red button more" (click)="emptyCart()">
+      Vaciar carro
+    </button>
   </div>
-  
+
 </div>
 
-	<div class="ui positive message" *ngIf="success">
-		<div class="header">
-			¡Compra exitosa!
-		</div>
-		<p>{{msg}}</p>
-	</div>
+<div class="ui positive message" *ngIf="success">
+  <div class="header">
+    ¡Compra exitosa!
+  </div>
+  <p>{{msg}}</p>
+</div>
 
-	<div class="ui negative message" *ngIf="success == false">
-		<div class="header">
-			Error en la compra
-		</div>
-		<p>{{msg}}</p>
-	</div>
+<div class="ui negative message" *ngIf="success == false">
+  <div class="header">
+    Error en la compra
+  </div>
+  <p>{{msg}}</p>
+</div>

@@ -2,7 +2,7 @@
 
 <app-navbar></app-navbar>
 
-<h1 class="main">Productos disponibles en Arquitrán!</h1>
+<h1 class="main">Historial de transacciones en Arquitrán</h1>
 
 <div class="row">
   <div class="column left">
@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th colspan="3">
-            Productos - Page {{page}}
+            Historial - Page {{page}}
           </th>
         </tr>
       </thead>
@@ -23,10 +23,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products">
-          <td>{{product.id}}</td>
-          <td>{{product.name}}</td>
-          <td>{{product.price}}</td>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{transaction.id}}</td>
+          <td>{{transaction.name}}</td>
+          <td>{{transaction.price}}</td>
         </tr>
       </tbody>
     </table>

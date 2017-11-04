@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -12,8 +14,8 @@ export class ApiService {
   shoppingCart: any = [];
   sum: number = 0;
 
-  constructor(private _http: Http) { 
-    
+  constructor(private _http: Http, private user: UserService, private router: Router) {
+
   }
 
   getDataCustom(request_path: string, token_required: boolean, token) {
@@ -33,6 +35,13 @@ export class ApiService {
           resolve(this.data);
         })
         .catch(err => {
+          // Unauthorized? -> Logout
+          if (err.status === 401) {
+            this.user.setUserLogout();
+            localStorage.clear();
+            this.router.navigate(['']);
+            return;
+          }
           this.data = err.json();
           resolve(this.data);
         });
@@ -56,6 +65,13 @@ export class ApiService {
           resolve(this.data);
         })
         .catch(err => {
+          // Unauthorized? -> Logout
+          if (err.status === 401) {
+            this.user.setUserLogout();
+            localStorage.clear();
+            this.router.navigate(['']);
+            return;
+          }
           this.data = err.json();
           resolve(this.data);
         });
@@ -79,6 +95,13 @@ export class ApiService {
           resolve(this.data);
         })
         .catch(err => {
+          // Unauthorized? -> Logout
+          if (err.status === 401) {
+            this.user.setUserLogout();
+            localStorage.clear();
+            this.router.navigate(['']);
+            return;
+          }
           this.data = err.json();
           resolve(this.data);
         });
