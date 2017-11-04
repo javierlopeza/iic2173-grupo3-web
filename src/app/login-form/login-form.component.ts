@@ -31,7 +31,6 @@ export class LoginFormComponent implements OnInit {
 
   }
 
-
   Login() {
     this.userCredentials.username = this.username;
     this.userCredentials.password = this.password;
@@ -52,6 +51,7 @@ export class LoginFormComponent implements OnInit {
           } else {
             this.user.setUserLoggedIn();
             this.user.setUsername(this.username);
+            localStorage.setItem('username', this.username);
             localStorage.setItem('token', this.responseData.token);
             this.router.navigate(['home']);
             this.success = true;

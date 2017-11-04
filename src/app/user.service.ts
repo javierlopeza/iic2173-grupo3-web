@@ -17,16 +17,16 @@ export class UserService {
     this.isUserLoggedIn = false;
   }
 
-  getUserLoggedIn(){
+  getUserLoggedIn() {
     return this.isUserLoggedIn;
   }
 
-  setUsername(username){
+  setUsername(username) {
     this.username = username;
   }
 
-  getUsername(){
-    return this.username;
+  getUsername() {
+    return localStorage.getItem('username');
   }
 
 }
