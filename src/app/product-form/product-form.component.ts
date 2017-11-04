@@ -11,7 +11,7 @@ import { ApiService } from './../api.service';
 })
 export class ProductFormComponent implements OnInit {
 
-  token : any;
+  token: any;
   product_id = null;
   error_msg = null;
   product = {

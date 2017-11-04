@@ -31,6 +31,12 @@ export class LoginFormComponent implements OnInit {
     this.userCredentials.username = this.username;
     this.userCredentials.password = this.password;
 
+    if (!/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(this.username)) {
+      this.success = false;
+      this.msg = 'Por favor ingrese un email válido';
+      return;
+    }
+
     if (this.username && this.password) {
       this.api.postData(`/${this.path}`, this.userCredentials, false, '').then(
         (result) => {
