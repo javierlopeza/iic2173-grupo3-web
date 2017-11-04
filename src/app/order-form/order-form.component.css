@@ -9,19 +9,20 @@
     margin-top: 25px;
 }
 
+.button.qty, .button.add {
+    margin-top: 0;
+}
+
 .shoppingTable {
     width: 80%;    
     margin-top: 25px;
-
 }
 
 #amount {
-    
     text-align: center;
 }
 
 .more {
-    
     margin-top: 25px;    
 }
 
@@ -31,6 +32,7 @@
 
 #pagesButtons {
     margin-left: 5%;    
+    margin-bottom: 50px;
 }
 
 * {
