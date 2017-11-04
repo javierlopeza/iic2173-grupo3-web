@@ -1,29 +1,50 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <app-navbar></app-navbar>
 
-<button class="ui orange button more" (click)="nextPage()">
-  SHOW MORE
-</button>
+<h1 class="main">Productos disponibles en Arquitrán!</h1>
 
-<table class="ui celled striped table">
-  <thead>
-    <tr>
-      <th colspan="3">
-        Productos - Page {{page}}
-      </th>
-    </tr>
-  </thead>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products">
-      <td>{{product.id}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.price}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="column left">
+    
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th colspan="3">
+            Productos - Page {{page}}
+          </th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Nombre
+          </th>
+          <th>
+            Precio
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="pagesButtons">
+      <button class="ui blue button more" (click)="previousPage()">
+        Previous Page
+      </button>
+      <button class="ui green button more" (click)="nextPage()">
+        Next Page
+      </button>
+    </div>
+
+  </div>
+</div>
