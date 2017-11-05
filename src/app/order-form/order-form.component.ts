@@ -22,7 +22,7 @@ export class OrderFormComponent implements OnInit {
   drugsCategories: any = [];
   hide = true;
 
-  constructor(private router: Router, private user: UserService, private api: ApiService) {
+  constructor(private router: Router, private user: UserService, public api: ApiService) {
   }
 
   ngOnInit() {
