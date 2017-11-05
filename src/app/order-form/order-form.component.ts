@@ -68,7 +68,8 @@ export class OrderFormComponent implements OnInit {
           dataArray = dataArray.filter(category => category.context === 'MEDICAMENTOS').map(category => category.id);
           this.drugsCategories = this.drugsCategories.concat(dataArray);
           this.categoriesPage ++;
-          this.getCategories();
+          // this.getCategories();
+          this.getProducts();  // Now all categories are in the first page
         } else {
           console.log('Retrieved all categories');
           // console.log(this.drugsCategories);
