@@ -2,34 +2,34 @@
 
 <h1 class="main">Resumen de tus compras:</h1>
 
-<table class="ui striped table shoppingTable">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Precio Unitario</th>          
-        <th>Cantidad</th>          
-        <th>Subtotal</th>          
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of api.shoppingCart">
-        <td>{{product.name}}</td>
-        <td>${{product.price}}</td>
-        <td>x{{product.amount}}</td>
-        <td>${{product.price * product.amount}}</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th></th>
-        <th class="right aligned">TOTAL</th>
-        <th>${{api.sum}}</th>
-      </tr>
-    </tfoot>
-  </table>
+<table class="ui striped table shoppingTable" *ngIf="!result">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio Unitario</th>          
+      <th>Cantidad</th>          
+      <th>Subtotal</th>          
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of api.shoppingCart">
+      <td>{{product.name}}</td>
+      <td>${{product.price}}</td>
+      <td>x{{product.amount}}</td>
+      <td>${{product.price * product.amount}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th></th>
+      <th class="right aligned">TOTAL</th>
+      <th>${{api.sum}}</th>
+    </tr>
+  </tfoot>
+</table>
 
-<div class="custom-form">
+<div class="custom-form" *ngIf="!result">
   <div class="html ui top attached segment">
     <div class="ui top attached label">Introduce los datos de envío para finalizar la compra</div>
     <div class="ui form">
@@ -46,3 +46,45 @@
     </div>
   </div>
 </div>
+
+<!-- Result table -->
+
+<button class="ui orange button backButton" routerLink="/home" *ngIf="result">
+  Volver
+</button>
+
+<table class="ui striped table resultTable" *ngIf="result">
+  <thead>
+    <tr>
+      <th colspan="6">Total Pagado: ${{result.total_accepted}}</th>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Precio Unitario</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of result.accepted" class="positive">
+      <td>{{product.product_id}}</td>
+      <td>{{product.name}}</td>
+      <td>${{product.price}}</td>
+      <td>{{product.quantity}}</td>
+      <td>${{product.price * product.quantity}}</td>
+      <td><i class="icon checkmark"></i> Aprobado</td>
+    </tr>
+    <tr *ngFor="let product of result.rejected" class="negative">
+      <td>{{product.product_id}}</td>
+      <td>{{product.name}}</td>
+      <td>${{product.price}}</td>
+      <td>{{product.quantity}}</td>
+      <td>${{product.price * product.quantity}}</td>
+      <td><i class="icon close"></i> {{product.rejected_reason}}</td>
+    </tr>
+  </tbody>
+</table>
