@@ -12,6 +12,11 @@ import { ApiService } from './../api.service';
 export class ProductFormComponent implements OnInit {
 
   token: any;
+  categories: any;
+  productName: string;
+  byId: boolean = true;
+  products: any = [];
+  categoriesPage = 1;
   product_id = null;
   error_msg = null;
   product = {
@@ -56,5 +61,44 @@ export class ProductFormComponent implements OnInit {
     });
   }
 
+  getCategories() {
+    // Request categories
+    this.token = localStorage.getItem('token');
+
+    this.api.getData(`/categories?page=${this.categoriesPage}`, true, this.token)
+      .then(data => {
+        let dataArray: any = data;
+        if (dataArray.length) {          
+          this.categoriesPage ++;
+          // this.getCategories();
+          this.getProduct();  // Now all categories are in the first page
+        } else {
+          console.log('Retrieved all categories');
+          // console.log(this.drugsCategories);
+          this.getProduct();
+        }
+      });
+  }
+
+
+  getProduct() {
+    // Request products
+    this.token = localStorage.getItem('token');
+    this.api.getData(`product?name=${this.productName}`, true, this.token)
+      .then(data => {
+
+        this.products = data['result'];
+        console.log(this.products);
+        
+      });
+  }
+
+  searchById() {
+    this.byId = true;
+  }
+
+  searchByName() {
+    this.byId = false;
+  }
 
 }

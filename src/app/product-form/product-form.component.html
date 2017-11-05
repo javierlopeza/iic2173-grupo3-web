@@ -2,15 +2,23 @@
 
 <div class="ui content">
 	<h1 class="main">Búsqueda de productos</h1>
+	<div id="searchButtons">
+		<button class="ui red button" (click)="searchById()">
+			Buscar por id
+		</button>
+		<button class="ui yellow button" (click)="searchByName()">
+			Buscar por nombre
+		</button>
+	</div>
 	<div class="ui divider"></div>
 
 	<div class="custom-form">
 		<div class="html ui top attached segment">
 			<div class="ui top attached label">Ingresa los datos del producto</div>
-			<div class="ui form">
+			<div *ngIf="byId" class="ui form">
 
 				<div class="field">
-					<label>Código del producto</label>
+					<label>Ingrese id del producto</label>
 					<input [(ngModel)]="product_id" type="number">
 				</div>
 
@@ -18,7 +26,22 @@
 					Buscar
 				</button>
 			</div>
+
+			<div *ngIf="!byId" class="ui form">
+				
+				<div class="field">
+					<label>Ingrese nombre del producto</label>
+					<input [(ngModel)]="productName" type="string">
+				</div>
+
+				<button class="ui orange button" (click)="searchProduct()">
+					Buscar
+				</button>
+			</div>
+
+			
 		</div>
+		
 	</div>
 
 	<table class="ui celled striped table product-info" *ngIf="product.success">
