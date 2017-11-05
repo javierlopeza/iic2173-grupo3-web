@@ -11,7 +11,7 @@ export class CheckoutComponent implements OnInit {
 
   address: string = "";
   
-  constructor(private router:Router, private api: ApiService) { }
+  constructor(private router:Router, public api: ApiService) { }
 
   ngOnInit() {
     let cart = JSON.parse(localStorage.getItem('cart'));
