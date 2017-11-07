@@ -14,8 +14,10 @@ export class ProductFormComponent implements OnInit {
   token: any;
   categories: any;
   productName: string;
-  byId: boolean = true;
+  byId = false;
   products: any = [];
+  productsName: any = [];
+  activeSearchByName: boolean = false;
   categoriesPage = 1;
   product_id = null;
   error_msg = null;
@@ -41,23 +43,32 @@ export class ProductFormComponent implements OnInit {
   searchProduct() {
     // Validate ID (must be a number)
     if (/^\d+$/.test(this.product_id) === false) {
+      this.error_msg = true;
+      this.activeSearchByName = false;
       return;
     }
     // Request product by ID
     this.token = localStorage.getItem('token');
     this.api.getData(`/product/${this.product_id}`, true, this.token)
     .then(data => {
-      if (data['success']) {
-        this.product.id = data['id'];
-        this.product.category = data['category'];
-        this.product.name = data['name'];
-        this.product.price = data['price'];
-        this.product.success = true;
-        this.error_msg = false;
-      } else {
-        this.product.success = false;
+      if (data["success"] == false) {
         this.error_msg = true;
+        this.activeSearchByName = false;
+      } else {
+        this.activeSearchByName = true;
+        this.error_msg = false;
       }
+      
+      
+      
+      this.productsName = [];
+      this.productsName.push(data);
+
+      
+    })
+    .catch((err) => {
+      this.error_msg = true;
+      this.activeSearchByName = false;
     });
   }
 
@@ -67,13 +78,13 @@ export class ProductFormComponent implements OnInit {
 
     this.api.getData(`/categories?page=${this.categoriesPage}`, true, this.token)
       .then(data => {
-        let dataArray: any = data;
-        if (dataArray.length) {          
+        const dataArray: any = data;
+        if (dataArray.length) {
           this.categoriesPage ++;
           // this.getCategories();
           this.getProduct();  // Now all categories are in the first page
         } else {
-          console.log('Retrieved all categories');
+          //console.log('Retrieved all categories');
           // console.log(this.drugsCategories);
           this.getProduct();
         }
@@ -83,13 +94,29 @@ export class ProductFormComponent implements OnInit {
 
   getProduct() {
     // Request products
+    //console.log(this.productName, "nombre buscado");
     this.token = localStorage.getItem('token');
-    this.api.getData(`product?name=${this.productName}`, true, this.token)
+    this.api.getData(`/product?name=${this.productName}`, true, this.token)
       .then(data => {
+        this.error_msg = false;
+        const products: any = data;
+        if (products == 0) {
+          //console.log(products, "prodcs");
+          this.error_msg = true;
+          this.activeSearchByName = false;
+        } else {
+          this.activeSearchByName = true;
+        }
+        this.productsName = [];
 
-        this.products = data['result'];
-        console.log(this.products);
-        
+        products.map((product) => {
+          this.productsName.push(product);
+        });
+
+
+      }).catch( (err) => {
+        this.activeSearchByName = false;
+        this.error_msg = true;
       });
   }
 

@@ -34,7 +34,7 @@
 					<input [(ngModel)]="productName" type="string">
 				</div>
 
-				<button class="ui orange button" (click)="searchProduct()">
+				<button class="ui orange button" (click)="getProduct()">
 					Buscar
 				</button>
 			</div>
@@ -43,38 +43,38 @@
 		</div>
 		
 	</div>
-
-	<table class="ui celled striped table product-info" *ngIf="product.success">
+	
+	<table class="ui striped table product-info" *ngIf="activeSearchByName">
 		<thead>
-			<tr>
-				<th colspan="2">
-					Producto #{{product.id}}
-				</th>
-			</tr>
+		  <tr>
+			<th colspan="7">
+			  Productos - Resultados obtenidos:
+			</th>
+		  </tr>
+		</thead>
+		<thead>
+		  <tr>
+			<th>ID producto</th>
+			<th>Nombre</th>
+			<th>Precio</th>
+			<th>ID categoría</th>
+			<th>Grupo</th>
+			<th>Área</th>
+			<th>contexto</th>
+		  </tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="table-label">Name</td>
-				<td>{{product.name}}</td>
-			</tr>
-			<tr>
-				<td class="table-label">Price</td>
-				<td>{{product.price}}</td>
-			</tr>
-			<tr>
-				<td class="table-label">Context</td>
-				<td>{{product.category.context}}</td>
-			</tr>
-			<tr>
-				<td class="table-label">Area</td>
-				<td>{{product.category.area}}</td>
-			</tr>
-			<tr>
-				<td class="table-label">Group</td>
-				<td>{{product.category.group}}</td>
-			</tr>
+		  <tr *ngFor="let product of productsName">
+			<td>{{product.id}}</td>
+			<td>{{product.name}}</td>
+			<td>${{product.price}}</td>
+			<td>{{product.category.id}}</td>
+			<td>{{product.category.group}}</td>
+			<td>{{product.category.area}}</td>
+			<td>{{product.category.context}}</td>
+		  </tr>
 		</tbody>
-	</table>
+	  </table>
 
 	<div class="ui negative message" *ngIf="error_msg">
 		<div class="header">
