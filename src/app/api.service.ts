@@ -12,6 +12,7 @@ export class ApiService {
   // private apiRoot = 'http://localhost:3000/api';
   public data: any = {};
   shoppingCart: any = [];
+  public errorLogin: Boolean = false;
   sum = 0;
 
   constructor(private _http: Http, private user: UserService, private router: Router) {
@@ -106,6 +107,7 @@ export class ApiService {
         .catch(err => {
           // Unauthorized? -> Logout
           if (err.status === 401) {
+            this.errorLogin = true;
             this.user.setUserLogout();
             localStorage.clear();
             this.router.navigate(['']);
