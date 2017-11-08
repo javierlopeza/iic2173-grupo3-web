@@ -84,6 +84,7 @@ export class ApiService {
           }
           this.data = err.json();
           resolve(this.data);
+          
         });
     });
   }
@@ -103,10 +104,24 @@ export class ApiService {
         .then(res => {
           this.data = res.json();
           resolve(this.data);
+        }, (err) => {
+          console.log(err, "errrod recien pillado");
+          reject(err);
+          if (err.status === 401) {
+            // Unauthorized? -> Logout
+            this.errorLogin = true;
+
+            this.user.setUserLogout();
+            localStorage.clear();
+            this.router.navigate(['']);
+            return;
+          }
         })
         .catch(err => {
-          // Unauthorized? -> Logout
+
+
           if (err.status === 401) {
+
             this.errorLogin = true;
             this.user.setUserLogout();
             localStorage.clear();
@@ -115,6 +130,7 @@ export class ApiService {
           }
           this.data = err.json();
           resolve(this.data);
+
         });
     });
   }

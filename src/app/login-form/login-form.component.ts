@@ -46,32 +46,34 @@ export class LoginFormComponent implements OnInit {
         (result) => {
 
           this.responseData = result;
+
           if (this.responseData.success === false) {
+
             this.success = false;
             this.msg = 'Credenciales inválidas, intente nuevamente';
           } else {
+            this.success = true;
+            this.api.errorLogin = false;
             this.user.setUserLoggedIn();
             this.user.setUsername(this.username);
             localStorage.setItem('username', this.username);
             localStorage.setItem('token', this.responseData.token);
             this.router.navigate(['home']);
-            this.success = true;
-            this.api.errorLogin = false;
+
           }
         }, (err) => {
-          console.log(err);
+
           this.success = false;
+          this.msg = 'Credenciales inválidas, intente otra vez';
           // Error log
         });
+
+
     } else {
       this.success = false;
       this.msg = 'Por favor ingrese credenciales';
     }
-    if (!this.api.errorLogin) {
-      this.success = this.api.errorLogin;
-      this.msg = 'Credenciales inválidas, intente otra vez';
 
-    }
   }
 
   Register() {
