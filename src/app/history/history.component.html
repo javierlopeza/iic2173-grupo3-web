@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 <app-navbar></app-navbar>
 
 <h1 class="main">Historial de transacciones en Arquitrán</h1>
@@ -10,9 +8,9 @@
     <table class="ui striped table"  *ngFor="let transaction of transactions">
       <thead>
         <tr>
-          <th colspan="1">{{transaction.date | date:'fullDate'}}</th>
-          <th colspan="4">Dirección de Entrega: {{transaction.address}}</th>          
-          <th colspan="1">Total Pagado: ${{transaction.total_accepted}}</th>
+          <th colspan="2">{{transaction.date | date:'fullDate'}}</th>
+          <th colspan="2">Dirección de Entrega: {{transaction.address}}</th>          
+          <th colspan="2">Total Pagado: ${{transaction.total_accepted}}</th>
         </tr>
       </thead>
       <thead>

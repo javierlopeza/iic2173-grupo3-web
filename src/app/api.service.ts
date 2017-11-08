@@ -8,30 +8,23 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ApiService {
 
-  //private apiRoot = 'https://arqss8.ing.puc.cl/api';
-  private apiRoot = 'http://localhost:3000/api';
+  private apiRoot = 'https://arqss8.ing.puc.cl/api';
+  // private apiRoot = 'http://localhost:3000/api';
   public data: any = {};
   shoppingCart: any = [];
-  sum: number = 0;
+  sum = 0;
 
   constructor(private _http: Http, private user: UserService, private router: Router) {
-    let cart = JSON.parse(localStorage.getItem('cart'));
-   
-    
+    const cart = JSON.parse(localStorage.getItem('cart'));
       if (cart) {
-        
         this.shoppingCart = cart;
-        let total = this.shoppingCart.reduce((sum, product) => {
+        const total = this.shoppingCart.reduce((sum, product) => {
           return sum + product.price * product.amount;
-
         }, 0);
         this.sum = total;
-        
-      } 
-      else {
+      } else {
         this.shoppingCart = [];
-      }  
-
+      }
   }
 
   getDataCustom(request_path: string, token_required: boolean, token) {
