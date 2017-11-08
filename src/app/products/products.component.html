@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 <app-navbar></app-navbar>
 
 <h1 class="main">Productos disponibles en Arquitrán!</h1>
@@ -10,23 +8,31 @@
     <table class="ui striped table">
       <thead>
         <tr>
-          <th colspan="3">
+          <th colspan="7">
             Productos - Page {{page}}
           </th>
         </tr>
       </thead>
       <thead>
-        <tr>
-          <th>ID</th>
+        <tr class="center aligned">
+          <th>ID producto</th>
           <th>Nombre</th>
           <th>Precio</th>
+          <th>ID categoría</th>
+          <th>Grupo</th>
+          <th>Área</th>
+          <th>Contexto</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let product of products">
-          <td>{{product.id}}</td>
+          <td class="center aligned">{{product.id}}</td>
           <td>{{product.name}}</td>
           <td>${{product.price}}</td>
+          <td class="center aligned">{{product.category.id}}</td>
+          <td>{{product.category.group}}</td>
+          <td>{{product.category.area}}</td>
+          <td>{{product.category.context}}</td>
         </tr>
       </tbody>
     </table>
