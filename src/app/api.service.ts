@@ -8,8 +8,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ApiService {
 
-  private apiRoot = 'https://arqss8.ing.puc.cl/api';
-  // private apiRoot = 'http://localhost:3000/api';
+  //private apiRoot = 'https://arqss8.ing.puc.cl/api';
+  private apiRoot = 'http://localhost:3000/api';
   public data: any = {};
   shoppingCart: any = [];
   sum: number = 0;

@@ -32,8 +32,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
+    component: HomeComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -41,33 +41,33 @@ const appRoutes: Routes = [
   },
   {
     path: 'product',
-    component: ProductFormComponent,
-    canActivate: [AuthGuard]
+    component: ProductFormComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'order',
-    component: OrderFormComponent,
-    canActivate: [AuthGuard]
+    component: OrderFormComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'categories',
-    component: CategoriesComponent,
-    canActivate: [AuthGuard]
+    component: CategoriesComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'products',
-    component: ProductsComponent,
-    canActivate: [AuthGuard]
+    component: ProductsComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'checkout',
-    component: CheckoutComponent,
-    canActivate: [AuthGuard]
+    component: CheckoutComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'history',
-    component: HistoryComponent,
-    canActivate: [AuthGuard]
+    component: HistoryComponent//,
+    //canActivate: [AuthGuard]
   },
 ];
 

@@ -1,6 +1,7 @@
 .product-info {
-    width: 50%;
-    margin-left: 25%;
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
     margin-top: 25px;
 }
 .table-label {
@@ -9,4 +10,9 @@
 .message {
     width: 50%;
     margin-left: 25%;
+}
+
+#searchButtons {
+    text-align: center;
+    padding: 20px;
 }
