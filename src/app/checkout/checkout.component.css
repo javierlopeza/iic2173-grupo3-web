@@ -1,0 +1,32 @@
+.main {
+    padding: 40px;
+}
+
+.shoppingTable {
+    width: 60%;    
+    margin-left: 20%;
+}
+
+.resultTable {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 25px;
+}
+
+.backButton {
+    margin-left: 15%; 
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.custom-form {
+    width: 60%;
+}
+
+tfoot tr th {
+    font-weight: bold;
+}

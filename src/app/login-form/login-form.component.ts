@@ -24,8 +24,12 @@ export class LoginFormComponent implements OnInit {
     private api: ApiService) { }
 
   ngOnInit() {
-  }
 
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['home']);
+    }
+
+  }
 
   Login() {
     this.userCredentials.username = this.username;
@@ -40,26 +44,36 @@ export class LoginFormComponent implements OnInit {
     if (this.username && this.password) {
       this.api.postData(`/${this.path}`, this.userCredentials, false, '').then(
         (result) => {
+
           this.responseData = result;
+
           if (this.responseData.success === false) {
+
             this.success = false;
             this.msg = 'Credenciales inválidas, intente nuevamente';
           } else {
+            this.success = true;
+            this.api.errorLogin = false;
             this.user.setUserLoggedIn();
             this.user.setUsername(this.username);
+            localStorage.setItem('username', this.username);
             localStorage.setItem('token', this.responseData.token);
             this.router.navigate(['home']);
-            this.success = true;
+
           }
         }, (err) => {
-          console.log(err);
+
           this.success = false;
+          this.msg = 'Credenciales inválidas, intente otra vez';
           // Error log
         });
+
+
     } else {
       this.success = false;
       this.msg = 'Por favor ingrese credenciales';
     }
+
   }
 
   Register() {

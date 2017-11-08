@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent implements OnInit {
   page = 1;
   token: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit() {
     this.getProducts();
@@ -22,14 +23,13 @@ export class ProductsComponent implements OnInit {
     // Request products
     this.token = localStorage.getItem('token');
     this.api.getData(`/products?page=${this.page}`, true, this.token)
-    .then(data => {
-      if (data[0]) {
-        this.products = data;
-      } else {
-        this.page = 1;
-        this.getProducts();
-      }
-    });
+      .then(data => {
+        if (data[0]) {
+          this.products = data;
+        } else {
+          this.page--;
+        }
+      });
   }
 
   nextPage() {
@@ -37,4 +37,10 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
+  previousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.getProducts();
+    }
+  }
 }

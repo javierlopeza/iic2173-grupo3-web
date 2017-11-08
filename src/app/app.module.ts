@@ -1,3 +1,4 @@
+import { HistoryComponent } from './history/history.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ApiService } from './api.service';
 import { HttpModule } from '@angular/http';
 import { ProductsComponent } from './products/products.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -30,8 +32,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
+    component: HomeComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -39,24 +41,34 @@ const appRoutes: Routes = [
   },
   {
     path: 'product',
-    component: ProductFormComponent,
-    canActivate: [AuthGuard]
+    component: ProductFormComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'order',
-    component: OrderFormComponent,
-    canActivate: [AuthGuard]
+    component: OrderFormComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'categories',
-    component: CategoriesComponent,
-    canActivate: [AuthGuard]
+    component: CategoriesComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'products',
-    component: ProductsComponent,
-    canActivate: [AuthGuard]
-  }
+    component: ProductsComponent//,
+    //canActivate: [AuthGuard]
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent//,
+    //canActivate: [AuthGuard]
+  },
+  {
+    path: 'history',
+    component: HistoryComponent//,
+    //canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
@@ -70,13 +82,14 @@ const appRoutes: Routes = [
     CategoriesComponent,
     NavbarComponent,
     ProductsComponent,
+    CheckoutComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     FormsModule,
-    HttpModule
-    
+    HttpModule,
   ],
   providers: [UserService, AuthGuard, ApiService],
   bootstrap: [AppComponent]

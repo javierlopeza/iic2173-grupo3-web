@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<h1 class="main">Historial de transacciones en Arquitrán</h1>
+
+<div class="row">
+  <div class="column left">
+    
+    <table class="ui striped table"  *ngFor="let transaction of transactions">
+      <thead>
+        <tr>
+          <th colspan="2">{{transaction.date | date:'fullDate'}}</th>
+          <th colspan="2">Dirección de Entrega: {{transaction.address}}</th>          
+          <th colspan="2">Total Pagado: ${{transaction.total_accepted}}</th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio Unitario</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of transaction.accepted" class="positive">
+          <td>{{product.product_id}}</td>
+          <td>{{product.name}}</td>
+          <td>${{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td>${{product.price * product.quantity}}</td>
+          <td><i class="icon checkmark"></i> Aprobado</td>
+        </tr>
+        <tr *ngFor="let product of transaction.rejected" class="negative">
+          <td>{{product.product_id}}</td>
+          <td>{{product.name}}</td>
+          <td>${{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td>${{product.price * product.quantity}}</td>
+          <td><i class="icon close"></i> {{product.rejected_reason}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="pagesButtons">
+      <button class="ui blue button more" (click)="previousPage()">
+        Previous Page
+      </button>
+      <button class="ui green button more" (click)="nextPage()">
+        Next Page
+      </button>
+    </div>
+
+  </div>
+</div>

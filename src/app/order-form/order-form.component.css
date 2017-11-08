@@ -2,3 +2,73 @@
     width: 50%;
     margin-left: 25%;
 }
+
+.productsTable {
+    width: 85%;
+    margin-left: 5%;
+    margin-top: 25px;
+}
+
+.button.qty, .button.add {
+    margin-top: 0;
+}
+
+.shoppingTable {
+    width: 80%;    
+    margin-top: 25px;
+}
+
+#amount {
+    text-align: center;
+}
+
+.more {
+    margin-top: 25px;    
+}
+
+.main {
+    padding: 40px;
+}
+
+#pagesButtons {
+    margin-left: 5%;    
+    margin-bottom: 50px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#empty {
+    color: red;
+}
+
+tfoot tr th {
+    font-weight: bold;
+}
