@@ -31,19 +31,19 @@
           <td>{{product.name}}</td>
           <td>${{product.price}}</td>
           <td class="center aligned">
-            <button *ngIf="!drugsCategories.includes(product.category)" class="ui green button more qty" (click)="remove(product)">
+            <button *ngIf="!drugsCategories.includes(product.category.id)" class="ui green button more qty" (click)="remove(product)">
               -
             </button>
-            <button *ngIf="!drugsCategories.includes(product.category)" class="ui blue button more qty" (click)="add(product)">
+            <button *ngIf="!drugsCategories.includes(product.category.id)" class="ui blue button more qty" (click)="add(product)">
               +
             </button>
           </td>
 
           <td id="amount">
-            <p>{{product["amount"]}}</p>
+            <p *ngIf="!drugsCategories.includes(product.category.id)">{{product["amount"]}}</p>
           </td>
           <td>
-            <button *ngIf="!drugsCategories.includes(product.category)" class="ui orange button more add" (click)="addProductToCart(product)">
+            <button *ngIf="!drugsCategories.includes(product.category.id)" class="ui orange button more add" (click)="addProductToCart(product)">
               Agregar al carro
             </button>
           </td>
