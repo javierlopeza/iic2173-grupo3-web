@@ -67,6 +67,7 @@ export class OrderFormComponent implements OnInit {
         if (dataArray.length) {
           dataArray = dataArray.filter(category => category.context === 'MEDICAMENTOS').map(category => category.id);
           this.drugsCategories = this.drugsCategories.concat(dataArray);
+
           this.categoriesPage ++;
           // this.getCategories();
           this.getProducts();  // Now all categories are in the first page
@@ -86,7 +87,10 @@ export class OrderFormComponent implements OnInit {
         if (data[0]) {
           this.products = data;
           this.products.map(product => product.amount = 0);
-          this.products = this.products.filter(product => !this.drugsCategories.includes(product.category));
+          this.products = this.products.filter(product => {
+
+            return !this.drugsCategories.includes(product.category);
+          });
         } else {
           this.page--;
         }
