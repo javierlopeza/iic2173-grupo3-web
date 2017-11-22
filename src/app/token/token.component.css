@@ -1,0 +1,45 @@
+.main {
+    text-align: center;
+}
+
+.service-container {
+    margin: 20px;
+}
+
+.service {
+    height: 8em;
+    display:block;
+    margin:auto;
+}
+
+.message-container {
+    width: 30%;
+}
+
+.input {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 20px;    
+}
+
+.token {
+    border-top-left-radius: .28571429rem; 
+    border-bottom-left-radius: .28571429rem;
+    border: 1px solid rgb(242, 113, 29);;
+    height: 34px;
+    padding-left: 10px;
+    line-height: 34px;
+    width: 100%;
+}
+
+.button,
+.button:focus {
+    background-color: rgb(242, 113, 29);
+    color: white;    
+}
+
+.button:active,
+.button:hover {
+    background-color: rgb(212, 88, 11);
+    color: white;
+}
