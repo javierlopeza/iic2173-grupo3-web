@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+<h3 class="main">¡Genera un ArquiToken para asociar tu cuenta a los siguientes servicios disponibles!</h3>
+
+<div class="service-container">
+  <img src="assets/img/telegram.png" class="service" alt="Telegram">
+</div>
+
+<div class="ui action input">
+  <input class="token" [(ngModel)]="newToken" [readOnly]="true"/>
+  <button class="ui right icon button" (click)="copy()" ngxClipboard [cbContent]="newToken" data-tooltip="Copiar al portapapeles" data-position="right center">
+    <i class="copy icon"></i>
+  </button>
+</div>
+
+<div class="message-container" style="margin: 30px 0 0 35%;" *ngIf="copied">
+  <div class="ui positive compact message">
+    <div class="header">
+      ¡ArquiToken copiado al portapapeles!
+    </div>
+    <p>Puedes ir a tu servicio preferido y asociar tu cuenta.</p>
+  </div>
+</div>

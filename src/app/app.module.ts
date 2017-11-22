@@ -1,10 +1,9 @@
-import { HistoryComponent } from './history/history.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SimpleTimer } from 'ng2-simple-timer';
-
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -17,6 +16,8 @@ import { UserService } from './user.service';
 import { AuthGuard} from './auth.guard';
 import { CategoriesComponent } from './categories/categories.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TokenComponent } from './token/token.component';
+import { HistoryComponent } from './history/history.component';
 
 import { ApiService } from './api.service';
 import { HttpModule } from '@angular/http';
@@ -29,7 +30,6 @@ const appRoutes: Routes = [
   {
     path: '',
     component: LoginFormComponent
-    
   },
   {
     path: 'home',
@@ -70,6 +70,11 @@ const appRoutes: Routes = [
     component: HistoryComponent//,
     //canActivate: [AuthGuard]
   },
+  {
+    path: 'token',
+    component: TokenComponent//,
+    //canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
@@ -85,12 +90,14 @@ const appRoutes: Routes = [
     ProductsComponent,
     CheckoutComponent,
     HistoryComponent,
+    TokenComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     FormsModule,
     HttpModule,
+    ClipboardModule,
   ],
   providers: [UserService, AuthGuard, ApiService, SimpleTimer],
   bootstrap: [AppComponent]

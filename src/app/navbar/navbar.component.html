@@ -18,7 +18,9 @@
 		Historial
 	</a>
 	<div class="right menu">
-		<div class="ui item" style="font-weight: bold">{{username}}</div>
+		<a class="ui item" style="font-weight: bold"  [routerLinkActive]="['active']" routerLink="/token">
+			{{username}}
+		</a>
 		<a class="ui item" (click)="Logout()">
 			Logout
 		</a>
