@@ -26,3 +26,10 @@
 		</a>
 	</div>
 </div>
+
+<div id="survey" *ngIf="api.survey">
+	<h1>Gracias por preferir Arquitrán:</h1>
+	<p>Ayudanos contestando una pequeña encuesta de satisfacción:</p>
+	<a href="https://{{api.surveyLink}}" (click) = "Disable()">entra en el siguiente link</a>
+
+</div>	

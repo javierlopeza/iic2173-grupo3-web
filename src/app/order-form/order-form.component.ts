@@ -57,6 +57,7 @@ export class OrderFormComponent implements OnInit {
       });
   }
 
+
   getCategories() {
     // Request categories
     this.token = localStorage.getItem('token');
@@ -70,9 +71,9 @@ export class OrderFormComponent implements OnInit {
 
           this.categoriesPage ++;
           // this.getCategories();
-          this.getProducts();  // Now all categories are in the first page
+          this.getCategories();  // Now all categories are in the first page
         } else {
-          console.log('Retrieved all categories');
+          // console.log('Retrieved all categories');
           // console.log(this.drugsCategories);
           this.getProducts();
         }
