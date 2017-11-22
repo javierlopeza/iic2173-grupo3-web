@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SimpleTimer } from 'ng2-simple-timer';
 
 
 import { AppComponent } from './app.component';
@@ -91,7 +92,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
   ],
-  providers: [UserService, AuthGuard, ApiService],
+  providers: [UserService, AuthGuard, ApiService, SimpleTimer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

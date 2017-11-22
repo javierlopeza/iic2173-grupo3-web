@@ -14,6 +14,8 @@ export class ApiService {
   shoppingCart: any = [];
   public errorLogin: Boolean = false;
   sum = 0;
+  public survey: Boolean = false;
+  public surveyLink : String = 'goo.gl/forms/B1O3iRPyssOGvvgg2';
 
   constructor(private _http: Http, private user: UserService, private router: Router) {
     const cart = JSON.parse(localStorage.getItem('cart'));
