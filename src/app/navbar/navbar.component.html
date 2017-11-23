@@ -18,9 +18,18 @@
 		Historial
 	</a>
 	<div class="right menu">
-		<div class="ui item" style="font-weight: bold">{{username}}</div>
+		<a class="ui item" style="font-weight: bold"  [routerLinkActive]="['active']" routerLink="/token">
+			{{username}}
+		</a>
 		<a class="ui item" (click)="Logout()">
 			Logout
 		</a>
 	</div>
 </div>
+
+<div id="survey" *ngIf="api.survey">
+	<h1>Gracias por preferir Arquitrán:</h1>
+	<p>Ayudanos contestando una pequeña encuesta de satisfacción:</p>
+	<a href="https://{{api.surveyLink}}" (click) = "Disable()">entra en el siguiente link</a>
+
+</div>	
